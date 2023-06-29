@@ -154,7 +154,7 @@ async def download_audio(event):
             event, "⪼ يجب عليك وضع رابط الفيديو المراد تنزيل منه"
         )
     matrixevent = await edit_or_reply(
-        event, "⌔∮ يتم التحضير الى التنزيل انتظر قليلا  ، "
+        event, "يتم التحضير الى التنزيل انتظر قليلا"
     )
     reply_to_id = await reply_id(event)
     for url in urls:
