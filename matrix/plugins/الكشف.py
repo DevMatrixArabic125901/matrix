@@ -46,7 +46,7 @@ async def fetch_info(replied_user, event):
     replied_user_profile_photos = await event.client(
         GetUserPhotosRequest(user_id=replied_user.id, offset=42, max_id=0, limit=80)
     )
-    replied_user_profile_photos_count = "⌔∮ هذا المستخدم لم يضع اي صورة"
+    replied_user_profile_photos_count = "✾ هذا المستخدم لم يضع اي صورة"
     try:
         replied_user_profile_photos_count = replied_user_profile_photos.count
         replied_user.photo.dc_id
@@ -72,29 +72,29 @@ async def fetch_info(replied_user, event):
         else ("هذا المستخدم ليس لديه اسم اول")
     )
     full_name = full_name or first_name
-    username = "@{}".format(username) if username else ("⌔∮ هذا المستخدم ليس لديه معرف")
-    user_bio = "⌔∮ هذا المستخدم ليس لديه اي نبذة" if not user_bio else user_bio
-    rozrtba = (
-        ".「  مطـور السورس  」."
+    username = "@{}".format(username) if username else ("✾ هذا المستخدم ليس لديه معرف")
+    user_bio = "اكتب الامر معهذا المستخدم ليس لديه اي نبذة" if not user_bio else user_bio
+    matrixrtba = (
+        ".「⟨ ✾ مطـور السورس ✾ ⟩」."
         if user_id == 5298061670
-        else (".「  العضـو  」.")
+        else ("⟨ العضـو ⟩")
     )
     rozrtba = (
-        ".「 مـالك الحساب  」."
+        "⟨ مـالك الحساب ⟩"
         if user_id == (await event.client.get_me()).id
         and user_id != 5298061670
-        else rozrtba
+        else matrixrtba
     )
     caption = " \n"
     caption += f"⊱━━━━━━━━⊰✾⊱━━━━━━━━⊰\n"
-    caption += f"╽<b>- الاسـم ⇜ </b> {full_name}\n"
-    caption += f"╽<b>- المـعـرف ⇜ </b> {username}\n"
-    caption += f"╽<b>- الايـدي  ⇜</b> <code>{user_id}</code>\n"
-    caption += f"╽<b>- الـمجموعات المشتـركة ⇜</b> {common_chat}\n"
-    caption += f"╽<b>- عـدد الصـورة ⇜</b> {replied_user_profile_photos_count}\n"
-    caption += f"╽<b>- الرتبـة ⇜</b>{rozrtba}\n"
-    caption += f"╽<b>-️ الـنبـذه ⇜</b> \n<code>{user_bio}</code>\n\n"
-    caption += f"╽<b>- رابط حسـابه ⇜</b> "
+    caption += f"╽<b>- الاسـم ✾</b> {full_name}\n"
+    caption += f"╽<b>- المـعـرف ✾</b> {username}\n"
+    caption += f"╽<b>- الايـدي  ✾</b> <code>{user_id}</code>\n"
+    caption += f"╽<b>- الـمجموعات المشتـركة ✾</b> {common_chat}\n"
+    caption += f"╽<b>- عـدد الصـورة ✾</b> {replied_user_profile_photos_count}\n"
+    caption += f"╽<b>- الرتبـة ✾</b>{matrixrtba}\n"
+    caption += f"╽<b>-️ الـنبـذه ✾</b> \n<code>{user_bio}</code>\n\n"
+    caption += f"╽<b>- رابط حسـابه ✾</b> "
     caption += f'<a href="tg://user?id={user_id}">{first_name}</a>\n'
     caption += f"⊱━━━━━━━━⊰✾⊱━━━━━━━━⊰\n"
     return photo, caption
@@ -102,7 +102,7 @@ async def fetch_info(replied_user, event):
 
 @matrix.ar_cmd(pattern="ايدي(?: |$)(.*)")
 async def who(event):
-    roz = await edit_or_reply(event, "**⌔∮ جار التعرف على المستخدم انتظر قليلا**")
+    roz = await edit_or_reply(event, "**✾ جار التعرف على المستخدم انتظر قليلا**")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     replied_user = await get_user_from_event(event)
@@ -110,7 +110,7 @@ async def who(event):
         photo, caption = await fetch_info(replied_user, event)
     except AttributeError:
         return await edit_or_reply(
-            roz, "**⌔∮ لم يتم العثور على معلومات لهذا المستخدم **"
+            matrix, "**✾ لم يتم العثور على معلومات لهذا المستخدم ✾**"
         )
     message_id_to_reply = event.message.reply_to_msg_id
     if not message_id_to_reply:
@@ -140,4 +140,4 @@ async def permalink(mention):
     if custom:
         return await edit_or_reply(mention, f"[{custom}](tg://user?id={user.id})")
     tag = user.first_name.replace("\u2060", "") if user.first_name else user.username
-    await edit_or_reply(mention, f"⪼  [{tag}](tg://user?id={user.id})  𓆰. ")
+    await edit_or_reply(mention, f"⟨  [{tag}](tg://user?id={user.id})  ⟩. ")
