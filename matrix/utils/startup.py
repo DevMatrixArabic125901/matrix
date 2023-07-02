@@ -31,7 +31,7 @@ from .pluginmanager import load_module
 from .tools import create_supergroup
 
 ENV = bool(os.environ.get("ENV", False))
-LOGS = logging.getLogger("اعداد ماتركس")
+LOGS = logging.getLogger("سورس ماتركس")
 cmdhr = Config.COMMAND_HAND_LER
 
 if ENV:
