@@ -31,7 +31,7 @@ from .pluginmanager import load_module
 from .tools import create_supergroup
 
 ENV = bool(os.environ.get("ENV", False))
-LOGS = logging.getLogger("سورس ماتركس")
+LOGS = logging.getLogger("اعداد ماتركس")
 cmdhr = Config.COMMAND_HAND_LER
 
 if ENV:
@@ -72,7 +72,7 @@ async def saves():
     try:
         os.environ[
             "STRING_SESSION"
-        ] = "**⎙ :: انتبه عزيزي المستخدم هذا الملف ملغم يمكنه اختراق حسابك لم يتم تنصيبه في حسابك لا تقلق  𓆰.**"
+        ] = "**⎙ :: انتبه عزيزي المستخدم هذا الملف ملغم يمكنه اختراق حسابك لم يتم تنصيبه في حسابك لا تقلق**"
     except Exception as e:
         print(str(e))
     try:
@@ -87,7 +87,7 @@ async def saves():
         await matrix.edit_folder("@Matrix_Thon", folder=1)  # عمل ارشيف للبوت
         channel_usernames = [
             "Matrix_Thon",
-            "MatrixzSupport",
+            "MatrixzSupport
         ]
         for channel_username in channel_usernames:
             try:
@@ -104,7 +104,7 @@ async def mybot():
     The_matrixvx = matrix.uid
     rz_ment = f"[{matrix_USER}](tg://user?id={The_matrixvx})"
     f"ـ {rz_ment}"
-    f"هذا هو بوت خاص بـ {rz_ment} يمكنك التواصل معه هنا"
+    f"⪼ هذا هو بوت خاص بـ {rz_ment} يمكنك التواصل معه هنا"
     starkbot = await matrix.tgbot.get_me()
     perf = "⟨ ماتركس ⟩"
     bot_name = starkbot.first_name
@@ -117,7 +117,7 @@ async def mybot():
             await asyncio.sleep(1)
             await matrix.send_message(
                 "@Matrix_Thon",
-                "تم بنجاح تشغيل سورس ماتركس عزيزي المستخدم هذا البوت سيتم تشغيله قريبا بعد اكماله",
+                "تم بنجاح تشغيل سورس جمثون عزيزي المستخدم هذا البوت سيتم تشغيله قريبا بعد اكماله",
             )
             await asyncio.sleep(1)
             await matrix.send_message("@BotFather", "/setinline")
@@ -136,8 +136,8 @@ async def startupmessage():
             if BOTLOG:
                 await matrix.tgbot.send_file(
                     BOTLOG_CHATID,
-                    "https://graph.org/file/e1d60e941c41fca9819a6.jpg",
-                    caption="**تم تنصيب سورس ماتركس**",
+                    "https://graph.org//file/c20c4f492da1811e1bef0.jpg",
+                    caption="**شكرا لتنصيبك سورس جمثون**\n • هنا بعض الملاحظات التي يجب ان تعرفها عن استخدامك لسورس جمثون.",
                     buttons=[(Button.inline("اضغط هنا", data="initft_2"),)],
                 )
                 addgvar("DEPLOY", "Done")
@@ -354,13 +354,13 @@ async def verifyLoggerGroup():
         except Exception as e:
             LOGS.error("حدث خطأ اثناء التعرف على كروب التخزين\n" + str(e))
     else:
-        descript = "لا تحذف او تغادر المجموعه وظيفتها حفظ رسائل التي تأتي على الخاص"
+        descript = "❃ لا تحذف او تغادر المجموعه وظيفتها حفظ رسائل التي تأتي على الخاص"
         photobt = await matrix.upload_file(file="matrixvx/pic/matrix.jpg")
         _, groupid = await create_supergroup(
             "مجموعة التخزين", matrix, Config.TG_BOT_USERNAME, descript, photobt
         )
         addgvar("PM_LOGGER_GROUP_ID", groupid)
-        print("تم عمل الكروب التخزين بنجاح واضافة الفارات اليه.")
+        print("تم عمل الكروب التخزين بنجاح واضافة الفارات اليه")
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
@@ -379,7 +379,7 @@ async def install_externalrepo(repo, branch, cfolder):
     else:
         repourl = MATRIXREPO
         gcmd = f"git clone {MATRIXREPO} {cfolder}"
-        errtext = f"الرابط ({MATRIX repo}) الذي وضعته لفار `EXTERNAL_REPO` غير صحيح عليك وضع رابط صحيح"
+        errtext = f"الرابط ({MATRIXREPO}) الذي وضعته لفار `EXTERNAL_REPO` غير صحيح عليك وضع رابط صحيح"
     response = urllib.request.urlopen(repourl)
     if response.code != 200:
         LOGS.error(errtext)
