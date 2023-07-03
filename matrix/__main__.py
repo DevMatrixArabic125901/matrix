@@ -34,8 +34,8 @@ try:
     LOGS.info("يتم تفعيل وضع حمايه الحساب من الاختراق")
     matrix.loop.create_task(saves())
     LOGS.info("تم تفعيل وضع حمايه الحساب من الاختراق")
-except Exception as bb:
-    LOGS.error(f"- {bb}")
+except Exception as dar:
+    LOGS.error(f"- {dar}")
     sys.exit()
 
 
@@ -43,8 +43,8 @@ try:
     LOGS.info("يتم تفعيل وضع الانلاين")
     matrix.loop.run_until_complete(mybot())
     LOGS.info("تم تفعيل وضع الانلاين بنجاح ✓")
-except Exception as meo:
-    LOGS.error(f"- {meo}")
+except Exception as matrix:
+    LOGS.error(f"- {matrix}")
     sys.exit()
 
 
@@ -71,9 +71,9 @@ async def startup_process():
             LOGS.info(str(e))
             return
     else:
-        LOGS.info("انت لا يمكنك تنصيب سورس ماتركس عزيزي دي")
-        LOGS.info("انت لا يمكنك تنصيب سورس ماتركس عزيزي دي")
-        LOGS.info("انت لا يمكنك تنصيب سورس ماتركس عزيزي دي")
+        LOGS.info("انت لا يمكنك تنصيب سورس ماتركس")
+        LOGS.info("انت لا يمكنك تنصيب سورس ماتركس")
+        LOGS.info("انت لا يمكنك تنصيب سورس ماتركس")
 
 
 matrix.loop.run_until_complete(startup_process())
@@ -83,4 +83,3 @@ if len(sys.argv) in {1, 3, 4}:
         matrix.run_until_disconnected()
 else:
     matrix.disconnect()
-  
