@@ -53,7 +53,7 @@ except Exception as e:
     sys.exit()
 
 
-matrix.tgbot = tgbot = @Sessionszbot(
+matrix.tgbot = tgbot = MatrixClient(
     session="Sessionszbot",
     api_id=Config.APP_ID,
     api_hash=Config.API_HASH,
