@@ -1,1 +1,1 @@
-from .matrix_config import Config
+from .matrixdar_config import Config
