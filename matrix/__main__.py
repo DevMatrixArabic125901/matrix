@@ -3,10 +3,11 @@ import sys
 
 import matrix
 from matrix import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
+from nmm.strings import blacklisted_users
 
 from .Config import Config
 from .core.logger import logging
-from .core.session import matrix
+from .core.session import jmrobot
 from .sql_helper.globals import gvarstatus
 from .utils import (
     add_bot_to_logger_group,
@@ -34,8 +35,8 @@ try:
     LOGS.info("يتم تفعيل وضع حمايه الحساب من الاختراق")
     matrix.loop.create_task(saves())
     LOGS.info("تم تفعيل وضع حمايه الحساب من الاختراق")
-except Exception as dar:
-    LOGS.error(f"- {dar}")
+except Exception as matrix:
+    LOGS.error(f"- {matrix}")
     sys.exit()
 
 
@@ -43,24 +44,27 @@ try:
     LOGS.info("يتم تفعيل وضع الانلاين")
     matrix.loop.run_until_complete(mybot())
     LOGS.info("تم تفعيل وضع الانلاين بنجاح ✓")
-except Exception as matrix:
-    LOGS.error(f"- {matrix}")
+except Exception as dar:
+    LOGS.error(f"- {dar}")
     sys.exit()
 
 
 async def startup_process():
+    if matrix.uid in blacklisted_users:
+        LOGS.info("انت لا يمكنك تنصيب سورس ماتركس")
+        return
     if not gvarstatus("TNSEEB"):
         try:
             await verifyLoggerGroup()
             await load_plugins("plugins")
             await load_plugins("assistant")
-            LOGS.info("⊱━━━━━━━━━━━⊰✾⊱━━━━━━━━━⊰")
+            LOGS.info("⊱━━━━━━━━━━━━⊰✾⊱━━━━━━━━━━━━━━━━━⊰")
             LOGS.info("تم انتهاء عملية التنصيب بنجاح")
             LOGS.info(
                 f"لمعرفة اوامر السورس ارسل {cmdhr}الاوامر\
-                \nمجموعة قناة السورس  https://t.me/MatrixzSupport"
+                \nمجموعة قناة السورس  https://t.me/Matrix_Thon"
             )
-            LOGS.info("⊱━━━━━━━━━━━⊰✾⊱━━━━━━━━━⊰")
+            LOGS.info("⊱━━━━━━━━━━━━━━⊰✾⊱━━━━━━━━━━━━━━━⊰")
             await verifyLoggerGroup()
             await add_bot_to_logger_group(BOTLOG_CHATID)
             if PM_LOGGER_GROUP_ID != -100:
