@@ -1,3 +1,1 @@
 # افضـل سورسـات تليثـون يـوزر بـوت العربيـه ...
-
-![t.me/Matrix_Thon](https://graph.org/file/e1d60e941c41fca9819a6.jpg)
