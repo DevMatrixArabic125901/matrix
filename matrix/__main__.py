@@ -3,7 +3,7 @@ import sys
 
 import matrix
 from matrix import BOTLOG_CHATID, PM_LOGGER_GROUP_ID
-from nmm.strings import blacklisted_users
+from matrixvx.strings import blacklisted_users
 
 from .Config import Config
 from .core.logger import logging
