@@ -7,7 +7,7 @@ from nmm.strings import blacklisted_users
 
 from .Config import Config
 from .core.logger import logging
-from .core.session import jmrobot
+from .core.session import matrix
 from .sql_helper.globals import gvarstatus
 from .utils import (
     add_bot_to_logger_group,
