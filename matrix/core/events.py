@@ -500,5 +500,3 @@ async def edit_message(
         supports_streaming=supports_streaming,
         schedule=schedule,
     )
-
-
