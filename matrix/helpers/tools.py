@@ -76,7 +76,7 @@ async def media_type(message):
 
 async def fileinfo(file):
     x, y, z, s = await runcmd(f"mediainfo '{file}' --Output=JSON")
-    matrix_json = json.loads(x)["media"]["track"]
+    jmthon_json = json.loads(x)["media"]["track"]
     dic = {
         "path": file,
         "size": int(matrix_json[0]["FileSize"]),
@@ -116,4 +116,3 @@ async def file_type(message):
     elif media["extension"] == "tgs":
         return "Animated Sticker"
     return "Document"
-      
