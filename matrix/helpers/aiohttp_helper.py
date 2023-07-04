@@ -28,4 +28,3 @@ class AioHttp:
         async with aiohttp.ClientSession() as session:
             async with session.get(link) as resp:
                 return resp.status
-              
