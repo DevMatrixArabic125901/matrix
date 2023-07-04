@@ -39,4 +39,3 @@ async def create_supergroup(group_name, client, botusername, descript, photo):
     if not str(created_chat_id).startswith("-100"):
         created_chat_id = int("-100" + str(created_chat_id))
     return result, created_chat_id
-  
