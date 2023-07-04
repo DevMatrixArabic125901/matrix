@@ -4,7 +4,7 @@ from telethon import Button, events
 from telethon.events import CallbackQuery
 
 from matrix import matrix
-from razan.CMD.aomari import *
+from matrixvx.CMD.aomari import *
 
 from ..Config import Config
 from ..core import check_owner
@@ -12,8 +12,8 @@ from ..core import check_owner
 ROE = """** اهلا بك عزيزي المستخدم في قائمة اوامر ماتركس
 من هنا يمكنك تصفح جميع الاوامر المتاحة **"""
 
-ROZADM = "من هنا يمكنك ايجاد جميع"
-RAZAN = Config.TG_BOT_USERNAME
+MATRIXVX = "من هنا يمكنك ايجاد جميع"
+MATRIXVX = Config.TG_BOT_USERNAME
 
 if Config.TG_BOT_USERNAME is not None and tgbot is not None:
 
@@ -201,11 +201,7 @@ async def varssett(event):
 - سورس ماتركس يمتلك اكثر من 100 أمر 
 - ماتركس هو افضل سورس عربي يتميز بالحماية
 
-قناة الكلايش:  @VVJMK
-قناة لفارات: @VVMAT
-قناة السورس: @Matrix_Thon
-قناة المساعدة: @VV190
-مجموعة المساعدة: @AkTSupport""",
+- قناة السورس: @Matrix_Thon""",
         buttons=[
             [Button.inline("رجوع", data="namevar")],
         ],
@@ -345,7 +341,6 @@ async def varssett(event):
 الشرح :  يقوم هذا الامر بتغيير الكليشة (الكلام) التي تظهر عندما يكون امر الحماية شغال ويراسلك احد
 الاستخدام : تقوم بالرد على الكليشة التي تريد وضعها بالامر   `.وضع كليشة الحماية `
 
-* يمكنك الحصول على  كليشة جاهزة من هذه القناة @VVMAT
 ملاحظة : يمكنك استخدام الاوامر في اي دردشة او محادثة
 اوامر فارات سورس ماتركس @Matrix_Thon""",
         buttons=[
