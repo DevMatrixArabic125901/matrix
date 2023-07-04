@@ -169,15 +169,15 @@ async def clippy(borg, msg, chat_id, reply_to_id):
 
 async def hide_inlinebot(borg, bot_name, text, chat_id, reply_to_id, c_lick=0):
     sticcers = await borg.inline_query(bot_name, f"{text}.")
-    jmthon = await sticcers[c_lick].click("me", hide_via=True)
-    if jmthon:
-        await borg.send_file(int(chat_id), jmthon, reply_to=reply_to_id)
-        await jmthon.delete()
+    matrix = await sticcers[c_lick].click("me", hide_via=True)
+    if matrix:
+        await borg.send_file(int(chat_id), matrix, reply_to=reply_to_id)
+        await matrix.delete()
 
 
 async def make_inline(text, borg, chat_id, reply_to_id):
-    jmthoninput = f"Inline buttons {text}"
-    results = await borg.inline_query(Config.TG_BOT_USERNAME, jmthoninput)
+    matrixinput = f"Inline buttons {text}"
+    results = await borg.inline_query(Config.TG_BOT_USERNAME, matrixinput)
     await results[0].click(chat_id, reply_to=reply_to_id)
 
 
