@@ -113,4 +113,3 @@ async def dotify(image, pix, mode):
     img.save(out)
     out.seek(0)
     return out
-  
