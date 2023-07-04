@@ -88,4 +88,3 @@ async def matrixalive(StartTime):
                   \nالوقت : {uptime}\
                   \nالدينو : {dyno}\
                   "
-  
