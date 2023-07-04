@@ -119,4 +119,3 @@ async def _(event):
         else:
             await matrix.send_message(chat, f"استثمار {msg}")
         await asyncio.sleep(1210)
-               
