@@ -245,7 +245,7 @@ async def rzfun(mention):
     if not user:
         return
     if user.id == 5298061670:
-        return await edit_or_reply(mention, f"**⌔∮ عذرا هذا مطور السورس**")
+        return await edit_or_reply(mention, f"**عذرا هذا مطور السورس**")
     await edit_or_reply(mention, f"**نزوج وماتباوع على غيري 🥺💞 ܰ**")
 
 
@@ -255,5 +255,5 @@ async def mention(mention):
     if not user:
         return
     if user.id == 5298061670:
-        return await edit_or_reply(mention, f"**⌔∮ عذرا هذا مطور السورس**")
+        return await edit_or_reply(mention, f"**عذرا هذا مطور السورس**")
     await edit_or_reply(mention, f"**طالق طالق بالعشرة 😹😭💕 ܰ**")
