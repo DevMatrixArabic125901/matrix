@@ -46,7 +46,7 @@ def load_module(shortname, plugin_path=None):
         mod.CMD_HELP = CMD_HELP
         mod.reply_id = reply_id
         mod.admin_cmd = admin_cmd
-        mod._jmthonutils = _jmthonutils
+        mod._matrixutils = _matrixutils
         mod.edit_delete = edit_delete
         mod.install_pip = install_pip
         mod.parse_pre = _format.parse_pre
@@ -96,4 +96,3 @@ def checkplugins(filename):
     filedata = filedata.replace("editmessage", "edit_message")
     with open(filename, "w") as f:
         f.write(filedata)
-      
