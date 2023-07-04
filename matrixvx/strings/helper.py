@@ -41,4 +41,3 @@ def get_msg_button(texts: str):
         txt = txt.replace(z, "")
 
     return txt.strip(), btn
-  
