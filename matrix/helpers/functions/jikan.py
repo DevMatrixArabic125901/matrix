@@ -359,8 +359,8 @@ async def formatJSON(outData, manga=False):
     msg += f"\n**السنة** : {jsonData['startDate']['year']}"
     msg += f"\n**المعدل** : {jsonData['averageScore']}"
     msg += f"\n**الشعبية** : {jsonData['popularity']}"
-    matrix = f"{jsonData['description']}"
-    msg += " __" + re.sub("<br>", "\n", matrix) + "__"
+    jmthon = f"{jsonData['description']}"
+    msg += " __" + re.sub("<br>", "\n", jmthon) + "__"
     msg = re.sub("<b>", "__**", msg)
     msg = re.sub("</b>", "**__", msg)
     return msg
@@ -776,5 +776,4 @@ async def get_filler_episodes(filler_id):  # sourcery no-metrics
         "mixed_ep": mixed_episodes,
         "filler_episodes": filler_episodes,
         "anime_canon_episodes": anime_canon_episodes,
-  }
-      
+}
