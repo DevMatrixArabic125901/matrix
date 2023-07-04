@@ -7,4 +7,3 @@ def install_pip(pipfile):
     process = Popen(pip_cmd, stdout=PIPE, stderr=PIPE)
     stdout, stderr = process.communicate()
     return stdout
-  
