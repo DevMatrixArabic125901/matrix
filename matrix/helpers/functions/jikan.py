@@ -359,8 +359,8 @@ async def formatJSON(outData, manga=False):
     msg += f"\n**السنة** : {jsonData['startDate']['year']}"
     msg += f"\n**المعدل** : {jsonData['averageScore']}"
     msg += f"\n**الشعبية** : {jsonData['popularity']}"
-    jmthon = f"{jsonData['description']}"
-    msg += " __" + re.sub("<br>", "\n", jmthon) + "__"
+    matrix = f"{jsonData['description']}"
+    msg += " __" + re.sub("<br>", "\n", matrix) + "__"
     msg = re.sub("<b>", "__**", msg)
     msg = re.sub("</b>", "**__", msg)
     return msg
