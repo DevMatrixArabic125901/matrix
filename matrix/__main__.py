@@ -58,13 +58,13 @@ async def startup_process():
             await verifyLoggerGroup()
             await load_plugins("plugins")
             await load_plugins("assistant")
-            LOGS.info("⊱━━━━━━━━━━━━⊰✾⊱━━━━━━━━━━━━━━━━━⊰")
+            LOGS.info("⊱━━━━━━━━⊰✾⊱━━━━━━━━━━⊰")
             LOGS.info("تم انتهاء عملية التنصيب بنجاح")
             LOGS.info(
                 f"لمعرفة اوامر السورس ارسل {cmdhr}الاوامر\
                 \nمجموعة قناة السورس  https://t.me/Matrix_Thon"
             )
-            LOGS.info("⊱━━━━━━━━━━━━━━⊰✾⊱━━━━━━━━━━━━━━━⊰")
+            LOGS.info("⊱━━━━━━━━⊰✾⊱━━━━━━━━━━⊰")
             await verifyLoggerGroup()
             await add_bot_to_logger_group(BOTLOG_CHATID)
             if PM_LOGGER_GROUP_ID != -100:
