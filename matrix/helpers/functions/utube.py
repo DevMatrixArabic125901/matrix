@@ -32,11 +32,11 @@ name_dl = (
 )
 
 
-async def yt_search(jmthon):
+async def yt_search(matrix):
     try:
-        jmthon = urllib.parse.quote(jmthon)
+        matrix = urllib.parse.quote(matrix)
         html = urllib.request.urlopen(
-            f"https://www.youtube.com/results?search_query={jmthon}"
+            f"https://www.youtube.com/results?search_query={matrix}"
         )
 
         user_data = re.findall(r"watch\?v=(\S{11})", html.read().decode())
