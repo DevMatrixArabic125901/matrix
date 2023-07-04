@@ -104,4 +104,3 @@ def deEmojify(inputString: str) -> str:
 def soft_deEmojify(inputString: str) -> str:
     """Remove emojis and other non-safe characters from string"""
     return get_emoji_regexp().sub("", inputString)
-  
