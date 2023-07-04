@@ -20,4 +20,3 @@ async def is_admin(matrix, chat_id, userid):
         return False
     else:
         return False
-      
