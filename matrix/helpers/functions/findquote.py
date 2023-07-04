@@ -26,4 +26,3 @@ async def search_quotes(query):
     quoteurl = f"https://www.goodreads.com/quotes/search?commit=Search&page={pgno}&q={query.replace(' ', '+')}&utf8=%E2%9C%93"
     results = await extract_quote(quoteurl)
     return random.choice(results)
-  
