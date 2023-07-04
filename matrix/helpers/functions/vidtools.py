@@ -81,4 +81,3 @@ async def take_screen_shot(
     if err:
         LOGS.error(err)
     return thumb_image_path if os.path.exists(thumb_image_path) else None
-      
