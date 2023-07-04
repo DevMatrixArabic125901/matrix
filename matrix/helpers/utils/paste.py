@@ -31,9 +31,9 @@ async def p_paste(message, extension=None):
             else f"https://pasty.lus.pm/{response['id']}.txt"
         )
         try:
-            from ...core.session import matrix
+            from ...core.session import jmrobot
 
-            await matrix.send_message(
+            await jmrobot.send_message(
                 Config.BOTLOG_CHATID,
                 f"**You have created a new paste in pasty bin.** Link to pasty is [here]({purl}). You can delete that paste by using this token `{response['deletionToken']}`",
             )
@@ -168,4 +168,3 @@ async def pastetext(text_to_print, pastetype=None, extension=None):
     if "error" in response:
         response = await d_paste(text_to_print, extension)
     return response
-      
