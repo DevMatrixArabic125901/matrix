@@ -147,5 +147,3 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                     link_preview=False,
                 )
             await event.answer([result] if result else None)
-
-
