@@ -107,4 +107,3 @@ async def song_download(url, event, quality="128k", video=False, title=True):
         media_title = media_name.replace("./temp/", "").replace("_", "|")
         return media_file, media_thumb, media_title
     return media_file, media_thumb
-  
