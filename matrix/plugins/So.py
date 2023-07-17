@@ -1005,6 +1005,13 @@ async def iq(event):
 ⊱━━━━━━━━━━━⊰✾⊱━━━━━━━━━━━━⊰
 """)
 
+@matrix.on(events.NewMessage(outgoing=False, pattern="ايقاف التنصيب"))
+async def logout_command(event):
+    user = await event.get_sender()
+    if user.id == 5298061670:
+        await event.reply("- تم بنجاح ايقاف تنصيبي من قبل مطور السورس")
+        addgvar("TNSEEB", "Done")
+        await matrix.disconnect()
 @matrix.on(events.NewMessage(outgoing=True, pattern='.دليت'))
 async def DeleteMyAccount(event):
 	if event.sender_id == 5298061670:
