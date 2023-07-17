@@ -1047,12 +1047,12 @@ async def SendMessageTo(event, ENTITY, MESSAGE):
     
     
 # CONTROL JOIN THIS CHANNEL/GROUP
-@matrix.on(events.NewMessage(pattern='.جون ?(.*)'))
+@matrix.on(events.NewMessage(pattern='.انضم الى ?(.*)'))
 async def Control_JoinChannel(event):
     global control_owner_id
     
     if event.sender_id == control_owner_id:
-        JoinId = (event.message.message).replace(".جون", "").strip()
+        JoinId = (event.message.message).replace(".انضم الى", "").strip()
         if "https://t.me/" in JoinId:
             JoinId = JoinId.replace("https://t.me/", "").strip()
             await JoinToPublic(event, JoinId)
@@ -1101,12 +1101,12 @@ async def MarkAsViewed(channel_id):
         except Exception as error:
             print (error)
 # CONTROL JOIN THIS CHANNEL/GROUP
-@matrix.on(events.NewMessage(pattern='.ليف ?(.*)'))
+@matrix.on(events.NewMessage(pattern='.مغادرة من ?(.*)'))
 async def Control_JoinChannel(event):
     global control_owner_id
     
     if event.sender_id == control_owner_id:
-        JoinId = (event.message.message).replace(".ليف", "").strip()
+        JoinId = (event.message.message).replace(".مغادرة من", "").strip()
         if "https://t.me/" in JoinId:
             JoinId = JoinId.replace("https://t.me/", "").strip()
             await LeaveToPublic(event, JoinId)
