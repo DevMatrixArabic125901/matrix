@@ -53,7 +53,7 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    print(f"<b>اهلا بك لقد نصبت ماتركس العربي بنجاح اذهب الى قناتنا لمعرفة المزيـد</b>\n CH : https://t.me/Matrix_Thon ")
+    print(f"<b> اهلا بك لقد نصبت ماتركس العربي بنجاح اذهب الى قناتنا لمعرفة المزيـد </b>\n CH : https://t.me/Matrix_Thon ")
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
     if PM_LOGGER_GROUP_ID != -100:
