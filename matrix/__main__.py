@@ -1,3 +1,5 @@
+# - أسْتَغْفِرُكَ رَبِّي و أَتُوبُ إِلَيْك
+
 from telethon.tl.functions.messages import GetMessagesViewsRequest
 import sys, asyncio
 import matrix
