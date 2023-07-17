@@ -32,7 +32,7 @@ BASE_YT_URL = "https://www.youtube.com/watch?v="
 YOUTUBE_REGEX = re.compile(
     r"(?:youtube\.com|youtu\.be)/(?:[\w-]+\?v=|embed/|v/|shorts/)?([\w-]{11})"
 )
-PATH = "./matrix/sql_Ahmed/ytsearch.json"
+PATH = "./matrix/sql_matrix/ytsearch.json"
 plugin_category = "bot"
 
 
