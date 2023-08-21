@@ -46,7 +46,7 @@ async def load_plugins(folder):
 async def startupmessage():
     try:
         if BOTLOG:
-            Config.CATUBLOGO = await matrix.tgbot.send_file(BOTLOG_CHATID, "https://telegra.ph/file/7fe6990ff2291b21af220.mp4", caption="🝳 ⦙ تـمّ  اعـادة تشـغيل\n تليثـون العـرب ✓  :  [ 8.1 ] .\n\n🝳 ⦙ للحصول على اوامر السورس\n أرسـل : (  `.اوامري`  ) \n\n🝳 ⦙ لمـعرفة كيفية تغير بعض كلايش\n او صور السـورس  أرسـل  :\n (  `.مساعده`  )\n\n🝳 ⦙ القناة الرسمية ماتركس العربي : @matrix\n🝳 ⦙ فارات سورس تليثون  :@TEAMTELETHON \n🝳 ⦙ كلايش تليثون :  @FGFFG\n 🝳 ⦙التحديثات والاضافات :  @M4_STORY\n",                buttons=[(Button.url("مطور تليثون الرسمي", "https://t.me/lll5l"),)],            )
+            Config.CATUBLOGO = await matrix.tgbot.send_file(BOTLOG_CHATID, "https://telegra.ph/file/70d0105c5b871ef41947f.jpg", caption="⌁ ⦙ تـمّ  اعـادة تشـغيل\n  ماتركس العربي ✓  :  [ 8.1 ] .\n\n⌁ ⦙ للحصول على اوامر السورس\n أرسـل : (  `.اوامري`  ) \n\n⌁ ⦙ القناة الرسمية ماتركس العربي : @MaTrixThon\n",                buttons=[(Button.url("هل تحتاج مساعدة", "https://t.me/MatrixzSupport"),)],            )
     except Exception as e:
         LOGS.error(e)
         return None
@@ -89,7 +89,7 @@ async def iqchn():
         print(str(e))
     try:
 
-        await matrix(JoinChannelRequest("@Matrix_Thon"))
+        await matrix(JoinChannelRequest("@MatrixThon"))
     except BaseException:
         pass
 
