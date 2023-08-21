@@ -41,7 +41,7 @@ async def startup_process():
 
     async def start_bot():
       try:
-          List = ["Matrix_Thon","MatrixzSupport"]
+          List = ["MatrixThon","MatrixzSupport"]
           from telethon.tl.functions.channels import JoinChannelRequest
           for id in List :
               Join = await matrix(JoinChannelRequest(channel=id))
