@@ -15,7 +15,7 @@ from ..sql_helper.global_collection import del_keyword_collectionlist, get_item_
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .matrixr import load_module
 from .tools import create_supergroup
-LOGS = logging.getLogger("ماتركس العربي \n ")
+LOGS = logging.getLogger("MATRIX \n ")
 cmdhr = Config.COMMAND_HAND_LER
 async def load_plugins(folder):
     path = f"matrix/{folder}/*.py"
