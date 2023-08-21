@@ -136,7 +136,7 @@ PP_TOO_SMOL = "**ꪎ︙  هذه الصورة صغيرة جدًا قم بإختي
 PP_ERROR = "**ꪎ︙  حدث خطأ أثناء معالجة الصورة  ⚠️**"
 BIO_SUCCESS = "**ꪎ︙  تم تغيير بايو حسابك بنجاح  ✅**"
 FOTOSECRET = gvarstatus("OR_FOTOSECRET") or "(جلب الذاتية|جلب الوقتية|جلب الذاتيه|جلب الوقتيه|سيف)"
-matrixfont = gvarstatus("DEFAULT_PIC") or "matrix/sql_helper/matrixIMOGE.ttf"
+matrixfont = gvarstatus("DEFAULT_PIC") or "matrix/sql_helper/MATRIXMOGE.ttf"
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 autopic_path = os.path.join(os.getcwd(), "matrix", "original_pic.png")
 digitalpic_path = os.path.join(os.getcwd(), "matrix", "digital_pic.png")
@@ -156,11 +156,11 @@ USERNAME_SUCCESS = "**ꪎ︙  تم تغيير معرّف حسابك بنجاح  
 USERNAME_TAKEN = "**ꪎ︙  هذا المعرّف مستخدم  ❌**"
 plugin_category = "tools"
 DEFAULTUSER = gvarstatus("FIRST_NAME") or ALIVE_NAME
-DEFAULTUSERBIO = gvarstatus("DEFAULT_BIO") or "الحمد الله"
+DEFAULTUSERBIO = gvarstatus("DEFAULT_BIO") or "الله اكبر فوقَ كلّ شيء ‏الله أكبرُ .. أعظمُ من كلّ شيء"
 DEFAULTUSER = AUTONAME or Config.ALIVE_NAME
 #LOGS = logging.getLogger(__name__)
 Botcompilation = gvarstatus("TGMABOT") or "@zmmbot"
-digitalpfp = (gvarstatus("AUTO_PIC") or "https://telegra.ph/file/6629cc2f43156292340a5.jpg")
+digitalpfp = (gvarstatus("AUTO_PIC") or "https://telegra.ph/file/81a67dc7ea688f731c3c8.jpg")
 
 async def digitalpicloop():
     DIGITALPICSTART = gvarstatus("صورة وقتية") == "true"
@@ -1127,7 +1127,7 @@ async def stats(event):
     catcmd = event.pattern_match.group(1)
     catevent = await edit_or_reply(event, STAT_INDICATION)
     start_time = time.time()
-    cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    cat = base64.b64decode("QUhNRURGRV9NQTVUUlhfUnVaaEtOdw==")
     hi = []
     hica = []
     hico = []
@@ -2967,4 +2967,4 @@ async def _(event):  # sourcery no-metrics
 matrix.loop.create_task(digitalpicloop())
 matrix.loop.create_task(autoname_loop())
 matrix.loop.create_task(autobio_loop())
-matrix.loop.create_task(GrChiq_loop())        
+matrix.loop.create_task(GrChiq_loop())
