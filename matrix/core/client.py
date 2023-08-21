@@ -250,7 +250,7 @@ class MatrixUserBotClient(TelegramClient):
                         text += (
                             "︙"
                         )
-                        text += f" عذرا قم بكتابه الر بشكل صحيح راجع : @Matrix_Thon ** "
+                        text += f"**عذرا قم بكتابه الر بشكل صحيح راجع : @MatrixThon**"
                         await check.client.send_message(
                             Config.PRIVATE_GROUP_BOT_API_ID, text, link_preview=False
                         )
@@ -276,7 +276,7 @@ class MatrixUserBotClient(TelegramClient):
         for _, process in self.running_processes.items():
             try:
                 process.kill()
-                LOGS.debug("Killed %d which was still running.", process.pid)
+                LOGS.debug("Killed %d which was still running", process.pid)
             except Exception as e:
                 LOGS.debug(e)
         self.running_processes.clear()
