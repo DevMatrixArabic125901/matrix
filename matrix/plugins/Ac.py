@@ -1,8 +1,3 @@
-# عزيزي عجبك امر  لاتخمطة نسخ لصق اكتبة بنفسك وبطريقتك اذا فعليا براسك خير
-
-
-
-
 import asyncio
 import random
 import glob
