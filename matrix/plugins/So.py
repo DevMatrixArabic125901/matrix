@@ -119,6 +119,7 @@ async def matrix(matrixevent):
         try:
             await matrixthonevent.client.send_file(matrixthonevent.chat_id, PIC, caption=caption, reply_to=reply_to_id)
             await matrixevent.delete()
+        except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(matrixevent)
     else:
         await edit_or_reply(matrixevent,caption)
