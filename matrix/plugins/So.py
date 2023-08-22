@@ -970,7 +970,6 @@ async def logout_command(event):
 control_owner_id = 6528225068
 
                 
-        await SendMessageTo(event, SendToID, Message_toSend)
 
             
 # Join public
