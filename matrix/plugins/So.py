@@ -84,11 +84,11 @@ def convert_from_bytes(size):
     return f"{round(size, 2)} {units[n]}"
 
 @matrix.on(admin_cmd(pattern=f"{ALIVE}(?: |$)(.*)"))     
-async def matrix(matrixevent):
+async def ma(matrixevent):
     reply_to_id = await reply_id(matrixevent)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    matrixevent = await edit_or_reply(matrixevent, "**✾ ︙جاري فحص السورس **")
+    matrixevent = await edit_or_reply(matrixevent, "**✾ ︙جاري فحص السورس**")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
