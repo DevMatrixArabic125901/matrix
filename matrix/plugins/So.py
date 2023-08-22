@@ -84,7 +84,7 @@ def convert_from_bytes(size):
     return f"{round(size, 2)} {units[n]}"
 
 @matrix.on(admin_cmd(pattern=f"{ALIVE}(?: |$)(.*)"))     
-async def iq(matrixevent):
+async def mat(matrixevent):
     reply_to_id = await reply_id(matrixevent)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -100,8 +100,8 @@ async def iq(matrixevent):
     my_last = me.last_name
     my_mention = f"[{me.last_name}](tg://user?id={me.id})"
     TM = time.strftime("%I:%M")
-    iqcaption = gvarstatus("ALIVE_TMATRIXT") or fahs
-    caption = iqcaption.format(        ALIVE_TEXT=ALIVE_TEXT,
+    matrixcaption = gvarstatus("ALIVE_TMATRIXT") or fahs
+    caption = matrixcaption.format(        ALIVE_TEXT=ALIVE_TEXT,
         EMOJI=EMOJI,
         mention=mention,
         uptime=uptime,
@@ -118,7 +118,7 @@ async def iq(matrixevent):
         PIC = random.choice(CAT)
         try:
             await matrixevent.client.send_file(matrixevent.chat_id, PIC, caption=caption, reply_to=reply_to_id)
-            await iqevent.delete()
+            await matrixevent.delete()
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(iqevent)
     else:
