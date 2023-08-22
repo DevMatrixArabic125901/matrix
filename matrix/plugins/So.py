@@ -84,7 +84,7 @@ def convert_from_bytes(size):
     return f"{round(size, 2)} {units[n]}"
 
 @matrix.on(admin_cmd(pattern=f"{ALIVE}(?: |$)(.*)"))     
-async def ma(matrixevent):
+async def iq(matrixevent):
     reply_to_id = await reply_id(matrixevent)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
