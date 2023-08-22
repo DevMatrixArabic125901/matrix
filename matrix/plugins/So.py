@@ -120,9 +120,9 @@ async def mat(matrixevent):
             await matrixevent.client.send_file(matrixevent.chat_id, PIC, caption=caption, reply_to=reply_to_id)
             await matrixevent.delete()
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
-            return await edit_or_reply(iqevent)
+            return await edit_or_reply(matrixevent)
     else:
-        await edit_or_reply(iqevent,caption)
+        await edit_or_reply(matrixevent,caption)
 fahs = """‎✾┊𝖬𝗒 𖠄 {mymention} ٫
 ‌‎✾┊𝖡𝗈𝖳 𖠄 {tgbot} ٫
 ‌‎✾┊𝖳𝗂𝗆𝖾 𖠄 {TM} ٫
