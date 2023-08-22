@@ -10,7 +10,7 @@ from .core.logger import logging
 from .core.session import matrix
 from .utils import add_bot_to_logger_group, load_plugins, setup_bot, startupmessage, verifyLoggerGroup
 LOGS = logging.getLogger("MATRIX")
-print(matrix.__copyright__)
+print(MatrixUserBotClient.__copyright__)
 print("المرخصة بموجب شروط " + matrix.__license__)
 cmdhr = Config.COMMAND_HAND_LER
 try:
