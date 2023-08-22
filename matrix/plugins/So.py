@@ -117,7 +117,7 @@ async def matrix(matrixevent):
         CAT = [x for x in matrix_IMG.split()]
         PIC = random.choice(CAT)
         try:
-            await matrixthonevent.client.send_file(matrixthonevent.chat_id, PIC, caption=caption, reply_to=reply_to_id)
+            await matrixevent.client.send_file(matrixevent.chat_id, PIC, caption=caption, reply_to=reply_to_id)
             await matrixevent.delete()
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(matrixevent)
