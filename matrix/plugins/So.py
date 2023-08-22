@@ -84,7 +84,7 @@ def convert_from_bytes(size):
     return f"{round(size, 2)} {units[n]}"
 
 @matrix.on(admin_cmd(pattern=f"{ALIVE}(?: |$)(.*)"))     
-async def iq(matrixevent):
+async def matrix(matrixevent):
     reply_to_id = await reply_id(matrixevent)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -119,7 +119,6 @@ async def iq(matrixevent):
         try:
             await matrixthonevent.client.send_file(matrixthonevent.chat_id, PIC, caption=caption, reply_to=reply_to_id)
             await matrixevent.delete()
-        except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(matrixevent)
     else:
         await edit_or_reply(matrixevent,caption)
