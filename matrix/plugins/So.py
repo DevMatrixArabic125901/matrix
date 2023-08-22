@@ -123,7 +123,7 @@ async def mat(matrixevent):
             return await edit_or_reply(matrixevent)
     else:
         await edit_or_reply(matrixevent,caption)
-fahs = """‎✾┊𝖬𝗒 𖠄 {mymention} ٫
+fahs = """‎✾┊𝖬𝗒 𖠄 {my_mention} ٫
 ‌‎✾┊𝖡𝗈𝖳 𖠄 {tgbot} ٫
 ‌‎✾┊𝖳𝗂𝗆𝖾 𖠄 {TM} ٫
 ‌‎✾┊𝗎𝗉 𝖳𝗂𝗆𝖾 𖠄 {uptime} ٫
