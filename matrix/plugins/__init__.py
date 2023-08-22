@@ -14,6 +14,7 @@ from ..core.managers import edit_delete, edit_or_reply
 from ..core.session import matrix
 from ..helpers import *
 from ..helpers.utils import _cattools, _catutils, _format, install_pip, reply_id
+from ..sql_helper.globals import gvarstatus
 bot = matrix
 LOGS = logging.getLogger(__name__)
 USERID = matrix.uid if Config.OWNER_ID == 0 else Config.OWNER_ID
