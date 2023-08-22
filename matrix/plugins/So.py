@@ -124,7 +124,7 @@ async def mat(matrixevent):
     else:
         await edit_or_reply(matrixevent,caption)
 fahs = """‎✾┊𝖬𝗒 𖠄 {my_mention} ٫
-‌‎✾┊𝖡𝗈𝖳 𖠄 {tgbot} ٫
+‌‎✾┊𝖡𝗈𝖳 𖠄 {tg_bot} ٫
 ‌‎✾┊𝖳𝗂𝗆𝖾 𖠄 {TM} ٫
 ‌‎✾┊𝗎𝗉 𝖳𝗂𝗆𝖾 𖠄 {uptime} ٫
 ‌‎✾┊‌‎𝖯𝗂𝗇𝗀 𖠄 {ping} ٫
