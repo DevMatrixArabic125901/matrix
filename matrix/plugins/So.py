@@ -1748,7 +1748,7 @@ async def iq(event):
 @matrix.tgbot.on(CallbackQuery(data=re.compile(rb"orders")))
 @check_owner
 async def inlinematrix(matrix):
-	text = "**✾ ︙قـائمـه الاوامـر :**\n**✾ ︙قنـاه السـورس :** @MaTrixThon\n**كلايـش السـورس :  @ClayishMatrix**"
+    text = "**✾ ︙قـائمـه الاوامـر :**\n**✾ ︙قنـاه السـورس :** @MaTrixThon\n**كلايـش السـورس :  @ClayishMatrix**"
     buttons = [[Button.inline("اوامر السورس", data="order1"), Button.inline("اوامر الحساب", data="ord1hs"),],[Button.inline("اوامر الكروب", data="ord1G"), Button.inline("اوامر الالعاب", data="ord1pl"),],[Button.inline("اوامر الصيغ", data="ordsag1"), Button.inline("اوامر الاغاني", data="ordSONG"),], [Button.inline("اسم وقتي", data="order13"), Button.inline("اوامر الاعلانات", data="ordahln1"),],[Button.inline("اوامر التسليه", data="order14"),],[Button.inline("الفارات", data="ordvars"),]]
     await matrix.edit(text, buttons=buttons)
 @matrix.tgbot.on(CallbackQuery(data=re.compile(rb"ord1G")))
