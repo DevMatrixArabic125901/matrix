@@ -635,25 +635,6 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         result = None
         query = matrix.text
         await bot.get_me()
-        if query.startswith("تنصيب") and matrix.query.user_id == bot.uid:
-            buttons = [[Button.url("1- استخراج ايبيات", Button.url("https://my.telegram.org/"),],[Button.url("2- ستخراج تيرمكس", "https://t.me/Sessionszbot"), Button.url("3- بوت فاذر", "http://t.me/BotFather"),],[Button.url("4- رابط التنصيب", "https://dashboard.heroku.com/new?template=https://github.com/qithoniq/temp"),],[Button.url("المطـور 👨🏼‍💻", "https://t.me/FFlXlX"),]]
-            if matrixPC and matrixPC.endswith((".jpg", ".png", "gif", "mp4")):
-                result = builder.photo(matrixPC, text=help1, buttons=buttons, link_preview=False)
-            elif matrixPC:
-                result = builder.document(matrixPC,title="matrix",text=help1,buttons=buttons,link_preview=False)
-            else:
-                result = builder.article(title="matrix",text=help1,buttons=buttons,link_preview=False)
-            await matrix.answer([result] if result else None)
-@bot.on(admin_cmd(outgoing=True, pattern="تنصيب"))
-async def repomatrix(matrix):
-    if matrix.fwd_from:
-        return
-    TG_BOT = Config.TG_BOT_USERNAME
-    if matrix.reply_to_msg_id:
-        await matrix.get_reply_message()
-    response = await bot.inline_query(TG_BOT, "تنصيب")
-    await response[0].click(matrix.chat_id)
-    await matrix.delete()
 @matrix.tgbot.on(CallbackQuery(data=re.compile(rb"play1")))
 @check_owner
 async def inlinematrix(matrix):
