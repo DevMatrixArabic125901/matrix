@@ -80,8 +80,8 @@ from telethon.tl.functions.channels import GetMessagesRequest
 from telethon.tl.functions.messages import SendVoteRequest
 from telethon.tl.functions.channels import LeaveChannelRequest
 from telethon.tl.functions.messages import SendReactionRequest
-from telethon.tl.types import ReactionEmoji
-from telethon.tl.types import ReactionEmpty
+#from telethon.tl.types import ReactionEmoji
+#from telethon.tl.types import ReactionEmpty
 from telethon.tl.functions.photos import DeletePhotosRequest, GetUserPhotosRequest
 from ..helpers.utils import reply_id as rd
 from telethon.tl.types import Channel, Chat, InputPhoto, User
