@@ -140,7 +140,7 @@ async def fetch_info(replied_user, event):
         "الاستـخـدام": " {tr}ايدي بالـرد او {tr}ايدي + معـرف/ايـدي الشخص",
     },
 )
-async def who(event):
+async def iq(event):
     "Gets info of an user"
     dr = await edit_or_reply(event, "⇆")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -178,7 +178,7 @@ async def who(event):
         "الاستـخـدام": " {tr}ا بالـرد او {tr}ا + معـرف/ايـدي الشخص",
     },
 )
-async def who(event):
+async def iq(event):
     "Gets info of an user"
     dr = await edit_or_reply(event, "⇆")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -220,7 +220,7 @@ async def who(event):
         ],
     },
 )
-async def potocmd(event):
+async def iq(event):
     "To get user or group profile pic"
     uid = "".join(event.raw_text.split(maxsplit=1)[1:])
     user = await event.get_reply_message()
