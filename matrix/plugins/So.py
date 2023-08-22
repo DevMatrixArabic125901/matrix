@@ -57,7 +57,7 @@ from telethon import client, events
 ALIVE = gvarstatus("OR_ALIVE") or "(فحص|السورس)"
 UPDATE = gvarstatus("OR_UPDATE") or "(اعاده تشغيل|تحديث)"
 ORDERS = gvarstatus("OR_ORDERS") or "(الاوامر|ألاوامر|اوامري|أوامري|م)"
-matrixPC = gvarstatus("ALIVE_PIC") or "https://graph.org/file/21db998a6c0717a982761.mp4"
+matrixPC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
 LOGS = logging.getLogger(os.path.basename(__name__))
 LOGS1 = logging.getLogger(__name__)
 ppath = os.path.join(os.getcwd(), "temp", "githubuser.jpg")
@@ -84,7 +84,7 @@ def convert_from_bytes(size):
     return f"{round(size, 2)} {units[n]}"
 
 @matrix.on(admin_cmd(pattern=f"{ALIVE}(?: |$)(.*)"))     
-async def matrix(matrixevent):
+async def iq(matrixevent):
     reply_to_id = await reply_id(matrixevent)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -94,7 +94,7 @@ async def matrix(matrixevent):
     _, check_sgnirts = check_data_base_heal_th()
     EMOJI = gvarstatus("ALIVE_EMOJI") or "✾︙  "
     ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "𝖶𝖾𝗅𝖼𝗈𝗆 𝖬𝖺𝗍𝗋𝗂x 𝖠𝗋𝖺𝖻𝗂𝖼"
-    matrix_IMG = gvarstatus("ALIVE_PIC") or "https://graph.org/file/21db998a6c0717a982761.mp4"
+    matrix_IMG = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
     tg_bot = Config.TG_BOT_USERNAME
     me = await matrixevent.client.get_me()
     my_last = me.last_name
