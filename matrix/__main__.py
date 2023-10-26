@@ -10,7 +10,7 @@ from .utils import add_bot_to_logger_group, load_plugins, setup_bot, startupmess
 LOGS = logging.getLogger("MATRIX")
 cmdhr = Config.COMMAND_HAND_LER
 try:
-    LOGS.info("بدء تنزيل ماتركس العربي")
+    LOGS.info("بدء تنصيب ماتركس العربي")
     matrix.loop.run_until_complete(setup_bot())
     LOGS.info("بدء تشغيل البوت")
 except Exception as e:
@@ -37,7 +37,7 @@ async def startup_process():
 
     async def start_bot():
       try:
-          List = ["MatrixThon","MatrixzSupport"]
+          List = ["MatrixThon","MatrxSupport"]
           from telethon.tl.functions.channels import JoinChannelRequest
           for id in List :
               Join = await matrix(JoinChannelRequest(channel=id))
@@ -51,7 +51,7 @@ async def startup_process():
     await verifyLoggerGroup()
     await load_plugins("plugins")
     await load_plugins("assistant")
-    print(f"<b> اهلا بك لقد نصبت ماتركس العربي بنجاح اذهب الى قناتنا لمعرفة المزيـد </b>\n CH : https://t.me/Matrix_Thon ")
+    print(f"<b> اهلا بك لقد نصبت ماتركس العربي بنجاح اذهب الى قناتنا لمعرفة المزيـد </b>\n CH : https://t.me/MatrixThon ")
     await verifyLoggerGroup()
     await add_bot_to_logger_group(BOTLOG_CHATID)
     if PM_LOGGER_GROUP_ID != -100:
