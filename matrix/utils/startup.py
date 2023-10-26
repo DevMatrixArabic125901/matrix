@@ -42,11 +42,11 @@ async def load_plugins(folder):
                     os.remove(Path(f"matrix/{folder}/{shortname}.py"))
             except Exception as e:
                 os.remove(Path(f"matrix/{folder}/{shortname}.py"))
-                LOGS.info(f"ꪎ︙غير قادر على التحميل {shortname} يوجد هناك خطا بسبب : {e}"                )
+                LOGS.info(f"᥀︙غير قادر على التحميل {shortname} يوجد هناك خطا بسبب : {e}"                )
 async def startupmessage():
     try:
         if BOTLOG:
-            Config.CATUBLOGO = await matrix.tgbot.send_file(BOTLOG_CHATID, "https://telegra.ph/file/70d0105c5b871ef41947f.jpg", caption="⌁ ⦙ تـمّ  اعـادة تشـغيل\n  ماتركس العربي ✓  :  [ 8.1 ] .\n\n⌁ ⦙ للحصول على اوامر السورس\n أرسـل : (  `.اوامري`  ) \n\n⌁ ⦙ القناة الرسمية ماتركس العربي : @MaTrixThon\n",                buttons=[(Button.url("هل تحتاج مساعدة", "https://t.me/MatrixzSupport"),)],            )
+            Config.CATUBLOGO = await matrix.tgbot.send_file(BOTLOG_CHATID, "https://telegra.ph/file/297e31cfb4db45d2fa61a.jpg", caption="᥀ ⦙ تـمّ  اعـادة تشـغيل\n  ماتركس العربي ✓  :  [ 1.2 ] .\n\n᥀ ⦙ للحصول على اوامر السورس\n أرسـل : (  `.اوامري`  ) \n\n᥀ ⦙ القناة الرسمية ماتركس العربي : @MaTrixThon\n",                buttons=[(Button.url("هل تحتاج مساعدة", "https://t.me/MatrixzSupport"),)],            )
     except Exception as e:
         LOGS.error(e)
         return None
@@ -67,7 +67,7 @@ async def setup_bot():
         for option in config.dc_options:
             if option.ip_address == matrix.session.server_address:
                 if matrix.session.dc_id != option.id:
-                    LOGS.warning(                        f"ꪎ︙ معرف DC ثابت في الجلسة من {matrix.session.dc_id}"                        f"ꪎ︙ يتبع ل {option.id}"                    )
+                    LOGS.warning(                        f"᥀︙ معرف DC ثابت في الجلسة من {matrix.session.dc_id}"                        f"᥀︙ يتبع ل {option.id}"                    )
                 matrix.session.set_dc(option.id, option.ip_address, option.port)
                 matrix.session.save()
                 break
@@ -82,7 +82,7 @@ async def setup_bot():
         LOGS.error(f"قم بتغير كود تيرمكس - {str(e)}")
         sys.exit()
 
-async def iqchn():
+async def matrixarabic():
     try:
         os.environ[            "STRING_SESSION"        ] = "**⎙ :: انتبه عزيزي المستخدم هذا الملف ملغم يمكنه اختراق حسابك لم يتم تنصيبه في حسابك لا تقلق.**"
     except Exception as e:
@@ -100,42 +100,42 @@ async def verifyLoggerGroup():
             entity = await matrix.get_entity(BOTLOG_CHATID)
             if not isinstance(entity, types.User) and not entity.creator:
                 if entity.default_banned_rights.send_messages:
-                    LOGS.info(                        "ꪎ︙الفار الأذونات مفقودة لإرسال رسائل لـ PRIVATE_GROUP_BOT_API_ID المحدد."                    )
+                    LOGS.info(                        "᥀︙الفار الأذونات مفقودة لإرسال رسائل لـ PRIVATE_GROUP_BOT_API_ID المحدد."                    )
                 if entity.default_banned_rights.invite_users:
-                    LOGS.info(                        "ꪎ︙الفار الأذونات مفقودة لإرسال رسائل لـ PRIVATE_GROUP_BOT_API_ID المحدد."                    )
+                    LOGS.info(                        "᥀︙الفار الأذونات مفقودة لإرسال رسائل لـ PRIVATE_GROUP_BOT_API_ID المحدد."                    )
         except ValueError:
             LOGS.error("ꪎ︙تـأكد من فـار المجـموعة  PRIVATE_GROUP_BOT_API_ID.")
         except TypeError:
-            LOGS.error(                "ꪎ︙لا يمكـن العثور على فار المجموعه PRIVATE_GROUP_BOT_API_ID. تأكد من صحتها."            )
+            LOGS.error(                "᥀︙لا يمكـن العثور على فار المجموعه PRIVATE_GROUP_BOT_API_ID. تأكد من صحتها."            )
         except Exception as e:
-            LOGS.error(                "ꪎ︙حدث استثناء عند محاولة التحقق من PRIVATE_GROUP_BOT_API_ID.\n"                + str(e)            )
+            LOGS.error(                "᥀︙حدث استثناء عند محاولة التحقق من PRIVATE_GROUP_BOT_API_ID.\n"                + str(e)            )
     else:
-        descript = "ꪎ︙ لا تحذف هذه المجموعة أو تغير إلى مجموعة (إذا قمت بتغيير المجموعة ، فسيتم فقد كل شيئ .)"
-        iqphoto1 = await matrix.upload_file(file="SQL/extras/Picsart_23-07-17_15-56-04-139.jpg")
-        _, groupid = await create_supergroup(            "تخزين ماتركس العام", matrix, Config.TG_BOT_USERNAME, descript  ,  iqphoto1 )
+        descript = "᥀︙ لا تحذف هذه المجموعة أو تغير إلى مجموعة (إذا قمت بتغيير المجموعة ، فسيتم فقد كل شيئ .)"
+        matrixphoto1 = await matrix.upload_file(file="SQL/extras/Picsart_23-07-17_15-56-04-139.jpg")
+        _, groupid = await create_supergroup(            "تخزين ماتركس العام", matrix, Config.TG_BOT_USERNAME, descript  ,  matrixphoto1 )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
-        print("ꪎ︙ تم إنشاء مجموعة المسـاعدة بنجاح وإضافتها إلى المتغيرات.")
+        print("᥀︙ تم إنشاء مجموعة المسـاعدة بنجاح وإضافتها إلى المتغيرات.")
         flag = True
     if PM_LOGGER_GROUP_ID != -100:
         try:
             entity = await matrix.get_entity(PM_LOGGER_GROUP_ID)
             if not isinstance(entity, types.User) and not entity.creator:
                 if entity.default_banned_rights.send_messages:
-                    LOGS.info(                        "ꪎ︙ الأذونات مفقودة لإرسال رسائل لـ PM_LOGGER_GROUP_ID المحدد."                    )
+                    LOGS.info(                        "᥀︙ الأذونات مفقودة لإرسال رسائل لـ PM_LOGGER_GROUP_ID المحدد."                    )
                 if entity.default_banned_rights.invite_users:
-                    LOGS.info(                        "ꪎ︙الأذونات مفقودة للمستخدمين الإضافيين لـ PM_LOGGER_GROUP_ID المحدد."                    )
+                    LOGS.info(                        "᥀︙الأذونات مفقودة للمستخدمين الإضافيين لـ PM_LOGGER_GROUP_ID المحدد."                    )
         except ValueError:
-            LOGS.error("ꪎ︙ لا يمكن العثور على فار  PM_LOGGER_GROUP_ID. تأكد من صحتها.")
+            LOGS.error("᥀︙ لا يمكن العثور على فار  PM_LOGGER_GROUP_ID. تأكد من صحتها.")
         except TypeError:
-            LOGS.error("ꪎ︙ PM_LOGGER_GROUP_ID غير مدعوم. تأكد من صحتها.")
+            LOGS.error("᥀︙ PM_LOGGER_GROUP_ID غير مدعوم. تأكد من صحتها.")
         except Exception as e:
-            LOGS.error(                "ꪎ︙ حدث استثناء عند محاولة التحقق من PM_LOGGER_GROUP_ID.\n" + str(e)            )
+            LOGS.error(                "᥀︙ حدث استثناء عند محاولة التحقق من PM_LOGGER_GROUP_ID.\n" + str(e)            )
     else:
-        descript = "ꪎ︙ وظيفه هذا المجموعة لحفض رسائل التي تكون موجة اليك ان لم تعجبك هذا المجموعة قم بحذفها نهائيأ 👍 \n  الـسورس : - @matrix"
-        iqphoto2 = await matrix.upload_file(file="SQL/extras/Picsart_23-07-17_15-54-32-380.jpg")
-        _, groupid = await create_supergroup(            "تخزين ماتركس الخاص", matrix, Config.TG_BOT_USERNAME, descript    , iqphoto2  )
+        descript = "᥀︙ وظيفه هذا المجموعة لحفض رسائل التي تكون موجة اليك ان لم تعجبك هذا المجموعة قم بحذفها نهائيأ \n  قنـاة الـسورس : - @Matrixthon"
+        matrixphoto2 = await matrix.upload_file(file="SQL/extras/Picsart_23-07-17_15-54-32-380.jpg")
+        _, groupid = await create_supergroup(            "تخزين ماتركس الخاص", matrix, Config.TG_BOT_USERNAME, descript    , matrixphoto2  )
         addgvar("PM_LOGGER_GROUP_ID", groupid)
-        print("ꪎ︙ تم إنشاء مجموعة خاصة لـ PRIVATE_GROUP_BOT_API_ID بنجاح وإضافتها إلى المتغيرات.")
+        print("᥀︙ تم إنشاء مجموعة خاصة لـ PRIVATE_GROUP_BOT_API_ID بنجاح وإضافتها إلى المتغيرات.")
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
