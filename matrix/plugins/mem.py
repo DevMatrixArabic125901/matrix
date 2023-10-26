@@ -344,7 +344,7 @@ async def _(event):
 async def _(event):
     "animation command"
     animation_interval = 0.5
-    animation_ttl = range(20)<
+    animation_ttl = range(20)
     event = await edit_or_reply(event, "❤️")
     animation_chars = ["🖤", "❤️", "🖤", "❤️", "‎"]
     for i in animation_ttl:
