@@ -10,7 +10,6 @@ import base64
 import shutil
 from bs4 import BeautifulSoup
 from ..helpers.utils import reply_id
-plugin_category = "@MatrixThon"
 import urllib
 from telethon.tl import functions
 from maso.utils.decorators import register
@@ -54,6 +53,7 @@ from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
 from ..helpers import get_user_from_event
 from maso.helpers.utils.tools import take_screen_shot
+plugin_category = "@MatrixThon"
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     args = shlex.split(cmd)
     process = await asyncio.create_subprocess_exec(        *args, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE    )
