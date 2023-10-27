@@ -17,20 +17,15 @@ import platform
 from telethon.errors.rpcerrorlist import BotInlineDisabledError
 import json
 from subprocess import PIPE
-from maso.helpers.functions import convert_toimage,    deEmojify,    phcomment,    threats,    trap,    trash
-from maso.helpers.functions import convert_tosticker,    flip_image,    grayscale,    invert_colors,    mirror_file,    solarize
-from ..helpers.utils import reply_id, _catutils, parse_pre, yaml_format, install_pip, get_user_from_event, _format
 from telethon.errors.rpcerrorlist import MediaEmptyError
 from ..helpers.google_image_download import googleimagesdownload
 from ..helpers.utils import reply_id
-from . import deEmojify
 from subprocess import run as runapp
 from asyncio.exceptions import CancelledError
 from time import sleep
 from platform import python_version
 from maso.helpers.utils.tools import take_screen_shot
 from . import ALIVE_NAME
-from ..helpers import fonts as emojify
 from github import Github
 from pySmartDL import SmartDL
 from pathlib import Path
@@ -66,22 +61,6 @@ from SQL.extras import *
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon import client, events
-async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
-    args = shlex.split(cmd)
-    process = await asyncio.create_subprocess_exec(        *args, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE    )
-    stdout, stderr = await process.communicate()
-    return (        stdout.decode("utf-8", "replace").strip(),        stderr.decode("utf-8", "replace").strip(),        process.returncode,        process.pid,    )    
-async def add_frame(imagefile, endname, x, color):
-    image = Image.open(imagefile)
-    inverted_image = PIL.ImageOps.expand(image, border=x, fill=color)
-    inverted_image.save(endname)
-async def crop(imagefile, endname, x):
-    image = Image.open(imagefile)
-    inverted_image = PIL.ImageOps.crop(image, border=x)
-    inverted_image.save(endname)
-CMD_FIG = {    "slant": "slant",    "3D": "3-d",    "5line": "5lineoblmaue",    "alpha": "alphabet",    "banner": "banner3-D",    "doh": "doh",    "basic": "basic",    "binary": "binary",    "iso": "isometric1",    "letter": "letters",    "allig": "alligator",    "dotm": "dotmatrix",    "bubble": "bubble",    "bulb": "bulbhead",    "digi": "digital"}
-button = ["0", "1", "2", "3", "4", "5", "6", "7"]
-
 ALIVE = gvarstatus("OR_ALIVE") or "(فحص|السورس)"
 UPDATE = gvarstatus("OR_UPDATE") or "(اعاده تشغيل|تحديث)"
 ORDERS = gvarstatus("OR_ORDERS") or "(الاوامر|ألاوامر|اوامري|أوامري|م)"
@@ -2165,6 +2144,7 @@ async def _(event):
     await asyncio.sleep(0.5)
     await event.edit("**بوووووم تم تفجير الضحيه**")
     await asyncio.sleep(2)
+
 @matrix.on(admin_cmd(pattern="قتل(?: |$)(.*)"))
 async def _(event):
     animation_interval = 0.7
