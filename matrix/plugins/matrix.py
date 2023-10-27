@@ -7,7 +7,6 @@ import time
 import sys
 import asyncio
 import math
-import pyfiglet
 import heroku3
 import urllib3
 import speedtest
@@ -17,25 +16,18 @@ import platform
 from telethon.errors.rpcerrorlist import BotInlineDisabledError
 import json
 from subprocess import PIPE
-from telethon.errors.rpcerrorlist import MediaEmptyError
-from ..helpers.google_image_download import googleimagesdownload
-from ..helpers.utils import reply_id
 from subprocess import run as runapp
 from asyncio.exceptions import CancelledError
 from time import sleep
 from platform import python_version
-from maso.helpers.utils.tools import take_screen_shot
-from . import ALIVE_NAME
 from github import Github
 from pySmartDL import SmartDL
 from pathlib import Path
 from telethon.errors import QueryIdInvalidError
-from ..helpers import catmemes
 from telethon.errors import QueryIdInvalidError
 from telethon.tl.types import InputMessagesFilterDocument
 from ..core import check_owner, pool
 from datetime import datetime
-from telethon import version
 from telethon import Button, events ,types 
 from telethon.events import CallbackQuery, InlineQuery
 from telethon.tl.functions.messages import ImportChatInviteRequest
@@ -45,7 +37,8 @@ from telethon.tl.functions.channels import LeaveChannelRequest
 from telethon.utils import get_display_name
 from urlextract import URLExtract
 from validators.url import url
-from matrix import StartTime, matrix, catversion
+from matrix import StartTime
+from matrix import matrix
 from ..Config import Config
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
@@ -58,6 +51,9 @@ from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from ..sql_helper.global_collection import add_to_collectionlist, del_keyword_collectionlist, get_collectionlist_items
 from . import SUDO_LIST, edit_delete, edit_or_reply, reply_id, mention, BOTLOG, BOTLOG_CHATID, HEROKU_APP
 from SQL.extras import *
+from matrix import StartTime, matrix
+from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon import client, events
