@@ -232,7 +232,7 @@ def errors_handler(func):
                 "date": datetime.datetime.now(),
             }
 
-            ftext += "\n\n--------END matrix TRACEBACK LOG--------"
+            ftext += "\n\n--------END MATRIX TRACEBACK LOG--------"
             command = 'git log --pretty=format:"%an: %s" -5'
             ftext += "\n\n\nLast 5 commits:\n"
             output = (await runcmd(command))[:2]
