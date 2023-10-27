@@ -22,7 +22,7 @@ from . import spamwatch
 plugin_category = "offers"
 LOGS = logging.getLogger(__name__)
 
-drago = (6528225068)
+matrix = (6373798952)
 
 
 async def get_user_from_event(event):
@@ -132,7 +132,7 @@ async def fetch_info(replied_user, event):
     return photo, caption
 
 
-@matrix.iq_cmd(
+@matrix.ma_cmd(
     pattern="ايدي(?: |$)(.*)",
     command=("ايدي", plugin_category),
     info={
@@ -170,7 +170,7 @@ async def iq(event):
         await dr.edit(caption, parse_mode="html")
 
 
-@matrix.iq_cmd(
+@matrix.ma_cmd(
     pattern="ا(?: |$)(.*)",
     command=("ا", plugin_category),
     info={
@@ -208,7 +208,7 @@ async def iq(event):
         await dr.edit(caption, parse_mode="html")
 
 
-@matrix.iq_cmd(
+@matrix.ma_cmd(
     pattern="صورته(?:\s|$)([\s\S]*)",
     command=("صورته", plugin_category),
     info={
