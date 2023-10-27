@@ -57,7 +57,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon import Button, custom, events, functions
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from validators.url import url
-from matrix import g
+from matrix import matrix
 from ..Config import Config
 from ..core.logger import logging
 from youtubesearchpython import SearchVideos
