@@ -87,7 +87,7 @@ telegraph = Telegraph()
 r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
-FONT_FILE_TO_USE = "matrix/helpers/styles/impact.ttf"
+FONT_FILE_TO_USE = "matrix/helpers/styles/impact.ttfk"
 
 async def get_tz(con):
     if "(Uk)" in con:
@@ -350,7 +350,7 @@ async def collage(event):
     for files in (catsticker, collagefile, endfile):
         if files and os.path.exists(files):
             os.remove(files)
-@iqthon.on(admin_cmd(pattern=r"رابط تطبيق ([\s\S]*)"))
+@matrix.on(admin_cmd(pattern=r"رابط تطبيق ([\s\S]*)"))
 async def app_search(event):
     app_name = event.pattern_match.group(1)
     event = await edit_or_reply(event, "ꪎ︙جـاري البحـث ↯")
@@ -419,7 +419,7 @@ async def app_search(event):
         await event.edit("ꪎ︙حـدث استثنـاء ⌭ :" + str(err))
 
 
-@iqthon.on(admin_cmd(pattern="الوقت(?:\s|$)([\s\S]*)(?<![0-9])(?: |$)([0-9]+)?"))
+@matrix.on(admin_cmd(pattern="الوقت(?:\s|$)([\s\S]*)(?<![0-9])(?: |$)([0-9]+)?"))
 async def time_func(tdata):
     con = tdata.pattern_match.group(1).title()
     tz_num = tdata.pattern_match.group(2)
@@ -464,10 +464,10 @@ async def time_func(tdata):
         await edit_or_reply(tdata, f"ꪎ︙ ألوقـت 🕛 :  {dtnow1} علـى {dtnow2}  فـي {c_name} ({time_zone} الـوقت العـالمي 🌍 .")
     if Config.COUNTRY:
         await edit_or_reply(tdata, f"ꪎ︙ ألوقـت 🕛  : {dtnow1} على {dtnow2}  هنـا فـي 🏷️ :  {Config.COUNTRY}" f"({time_zone} الـوقت العـالمي 🌍 .")
-@iqthon.on(admin_cmd(pattern="وقتي(?:\s|$)([\s\S]*)"))
+@matrix.on(admin_cmd(pattern="وقتي(?:\s|$)([\s\S]*)"))
 async def _(event):
     reply_msg_id = await reply_id(event)
-    current_time = dt.now().strftime(f"⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁\n ⌁ Arab time \n⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁\n   {os.path.basename(Config.TZ)}\n  Time: %I:%M:%S \n  Date: %d.%m.%y \n⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁")
+    current_time = dt.now().strftime(f"⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁\n ⌁ Matrix time \n⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁\n   {os.path.basename(Config.TZ)}\n  Time: %I:%M:%S \n  Date: %d.%m.%y \n⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁")
     input_str = event.pattern_match.group(1)
     if input_str:
         current_time = input_str
@@ -486,34 +486,7 @@ async def _(event):
     )
     os.remove(required_file_name)
     await event.delete()
-@iqthon.on(admin_cmd(pattern=r"الاذان(?: |$)(.*)"))
-async def get_adzan(adzan):
-    LOKASI = adzan.pattern_match.group(1)
-    url = f"https://api.pray.zone/v2/times/today.json?city={LOKASI}"
-    request = requests.get(url)
-    if request.status_code != 200:
-        await edit_delete(
-            adzan, f"**ꪎ︙لم يـتم العثور على معلومات لـهذه المدينه ⚠️ {LOKASI}\n يرجى كتابة اسم محافظتك وباللغه الانكليزي **", 5
-        ) 
-        return
-    result = json.loads(request.text)
-    iqthonresult = f"<b>اوقـات صـلاه المـسلمين 👳‍♂️ </b>\
-            \n\n<b>المـدينة  Ⓜ️  : </b><i>{result['results']['location']['city']}</i>\
-            \n<b>الـدولة  🏳️ : </b><i>{result['results']['location']['country']}</i>\
-            \n<b>التـاريخ  🔢  : </b><i>{result['results']['datetime'][0]['date']['gregorian']}</i>\
-            \n<b>الهـجري  ⏳  : </b><i>{result['results']['datetime'][0]['date']['hijri']}</i>\
-            \n\n<b>الامـساك  🕒  : </b><i>{result['results']['datetime'][0]['times']['Imsak']}</i>\
-            \n<b>شـروق الشمس  🌝 : </b><i>{result['results']['datetime'][0]['times']['Sunrise']}</i>\
-            \n<b>الـفجر  🌔   : </b><i>{result['results']['datetime'][0]['times']['Fajr']}</i>\
-            \n<b>الضـهر 🌞   : </b><i>{result['results']['datetime'][0]['times']['Dhuhr']}</i>\
-            \n<b>العـصر  🌥    : </b><i>{result['results']['datetime'][0]['times']['Asr']}</i>\
-            \n<b>غـروب الشمس  🌘 : </b><i>{result['results']['datetime'][0]['times']['Sunset']}</i>\
-            \n<b>المـغرب 🌑 : </b><i>{result['results']['datetime'][0]['times']['Maghrib']}</i>\
-            \n<b>العشـاء  🌚   : </b><i>{result['results']['datetime'][0]['times']['Isha']}</i>\
-            \n<b>منتـصف الليل 🕛 : </b><i>{result['results']['datetime'][0]['times']['Midnight']}</i>\
-    "
-    await edit_or_reply(adzan, iqthonresult, "html")
-@iqthon.on(admin_cmd(pattern=r"كورونا(?:\s|$)([\s\S]*)"))
+@matrix.on(admin_cmd(pattern=r"كورونا(?:\s|$)([\s\S]*)"))
 async def corona(event):
     input_str = event.pattern_match.group(1)
     country = (input_str).title() if input_str else "العالم"
@@ -558,7 +531,7 @@ async def corona(event):
             await edit_delete(catevent, "**ꪎ︙ معلومـات فـايروس كـورونا. 💉  \n  فـي بـلد  - {} غـير مـوجودة ❌**".format(country),
                 5,
             )
-@iqthon.on(admin_cmd(pattern=r"بحث(320)?(?:\s|$)([\s\S]*)"))
+@matrix.on(admin_cmd(pattern=r"بحث(320)?(?:\s|$)([\s\S]*)"))
 async def _(event):
     "To search songs"
     reply_to_id = await reply_id(event)
@@ -633,7 +606,7 @@ async def delete_messages(event, chat, from_message):
     await event.client.send_read_acknowledge(chat)
 
 
-@iqthon.on(admin_cmd(pattern=r"فيديو(?:\s|$)([\s\S]*)"))
+@matrix.on(admin_cmd(pattern=r"فيديو(?:\s|$)([\s\S]*)"))
 async def _(event):
     reply_to_id = await reply_id(event)
     reply = await event.get_reply_message()
@@ -696,7 +669,7 @@ async def _(event):
     for files in (catthumb, vsong_file):
         if files and os.path.exists(files):
             os.remove(files)
-@iqthon.on(admin_cmd(pattern=r"معلومات الاغنيه(?: |$)(.*)"))
+@matrix.on(admin_cmd(pattern=r"معلومات الاغنيه(?: |$)(.*)"))
 async def shazamcmd(event):
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
@@ -730,7 +703,7 @@ async def shazamcmd(event):
         event.chat_id, image, caption=f"**ꪎ︙ الأغنية 🎧 :** `{song}`", reply_to=reply
     )
     await catevent.delete()
-@iqthon.on(admin_cmd(pattern=r"كوكل بحث ([\s\S]*)"))
+@matrix.on(admin_cmd(pattern=r"كوكل بحث ([\s\S]*)"))
 async def gsearch(q_event):
     "Google search command."
     catevent = await edit_or_reply(q_event, "**ꪎ︙جـاري البحـث ↯**")
@@ -791,7 +764,7 @@ async def gsearch(q_event):
             BOTLOG_CHATID,
             "**ꪎ︙إستعـلام بحـث جـوجـل 🝰 **" + match + "**تم تنفيـذه بنجـاح ✓**",
         )
-@iqthon.on(admin_cmd(pattern=r"البحث العام(?: |$)(.*)"))
+@matrix.on(admin_cmd(pattern=r"البحث العام(?: |$)(.*)"))
 async def _(event):
     start = datetime.now()
     OUTPUT_STR = "**ꪎ︙قم بالـرد على صـورة لإجـراء البحـث العڪـسي في گـوگـل ✦**"
@@ -851,7 +824,7 @@ async def _(event):
     else:
         catevent = event
     await edit_or_reply(catevent, OUTPUT_STR, parse_mode="HTML", link_preview=False)
-@iqthon.on(admin_cmd(pattern=r"البحث اونلاين(?:\s|$)([\s\S]*)"))
+@matrix.on(admin_cmd(pattern=r"البحث اونلاين(?:\s|$)([\s\S]*)"))
 async def google_search(event):
     input_str = event.pattern_match.group(1)
     reply_to_id = await reply_id(event)
@@ -869,8 +842,8 @@ async def google_search(event):
     results = await event.client.inline_query("@StickerizerBot", query)
     await results[0].click(event.chat_id, reply_to=reply_to_id, hide_via=True)
     await event.delete()
-@iqthon.on(admin_cmd(pattern="تخزين الصوت(?: |$)(.*)"))
-async def iq(event):
+@matrix.on(admin_cmd(pattern="تخزين الصوت(?: |$)(.*)"))
+async def mat(event):
     ureply = await event.get_reply_message()
     if not (ureply and ("audio" in ureply.document.mime_type)):
         await event.edit("**قم برد على الصوت بشرط ان يكون الامتداد mp3 وليس بصمه**")
@@ -880,8 +853,8 @@ async def iq(event):
     await event.edit("**جارٍ التنزيل ... الملفات الكبيرة تستغرق وقتًا ..**")
     await event.client.download_media(ureply, d)
     await event.edit("**تم .. الآن قم بالرد على الفيديو او المتحركه الذي تريد إضافة هذا الصوت فيه بالأمر :** `.اضف الصوت`")
-@iqthon.on(admin_cmd(pattern="اضف الصوت(?: |$)(.*)"))
-async def iq(event):
+@matrix.on(admin_cmd(pattern="اضف الصوت(?: |$)(.*)"))
+async def mat(event):
     ureply = await event.get_reply_message()
     if not (ureply and ("video" in ureply.document.mime_type)):
         await event.edit("**قم بالرد على متحركه او فيديو الذي تريد إضافة الصوت فيه.**")
@@ -889,27 +862,27 @@ async def iq(event):
     xx = await event.edit("**  جاري اضافه الصوت انتضر قليلا \n ملاحضه لاتنسى تطابق وقت الفيديو او المتحركه مع وقت الصوت **")
     ultt = await ureply.download_media()
     ls = os.listdir("SQL/extras")
-    z = "iq.mp3"
-    x = "SQL/extras/iq.mp3"
+    z = "matrix.mp3"
+    x = "SQL/extras/matrix.mp3"
     if z not in ls:
         await event.edit("**قم بالرد أولاً بصوت بامتداد mp3 فقط**")
         return
     video = m.VideoFileClip(ultt)
     audio = m.AudioFileClip(x)
     out = video.set_audio(audio)
-    out.write_videofile("L5.mp4", fps=30)
+    out.write_videofile("matrix.mp4", fps=30)
     await event.client.send_file(
         event.chat_id,
         file="L5.mp4",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
-    os.remove("L5.mp4")
+    os.remove("matrix.mp4")
     os.remove(x)
     os.remove(ultt)
     await xx.delete()
 
-@iqthon.on(admin_cmd(pattern="تحويل صوره(?: |$)(.*)"))
+@matrix.on(admin_cmd(pattern="تحويل صوره(?: |$)(.*)"))
 async def _(event):
     reply_to_id = await reply_id(event)
     reply = await event.get_reply_message()
@@ -1310,28 +1283,6 @@ async def get(event):
         os.remove(name)
     else:
         await edit_or_reply(event, "**ꪎ︙قم بالـرد على الرسالـة لتحويلها الى ملف**")
-@iqthon.on(admin_cmd(pattern="بورن(?:\s|$)([\s\S]*)"))
-async def catbot(event):
-    input_str = event.pattern_match.group(1)
-    input_str = deEmojify(input_str)
-    if " " in input_str:
-        username, text = input_str.split(" ")
-    else:
-        return await edit_or_reply(event, " **ꪎ︙  عذرا يجب الرد على الصوره التي تريد ستعملها ومن ثم ارسال الامر :**  `.بورن + معرف الشخص + الكتابه التي تريدها`")
-    replied = await event.get_reply_message()
-    catid = await reply_id(event)
-    if not replied:
-        return await edit_or_reply(event, "**ꪎ︙ عذرا قم بالرد على الصوره **")
-    output = await _cattools.media_to_pic(event, replied)
-    if output[1] is None:
-        return await edit_delete(output[0], "**ꪎ︙ تعذر استخراج الصورة من الرسالة التي تم الرد عليها **")
-    download_location = convert_toimage(output[1])
-    size = os.stat(download_location).st_size
-    if size > 5242880:
-        os.remove(download_location)
-        return await output[0].edit("**ꪎ︙ حجم الملف الذي تم الرد عليه غير مدعوم ، يجب أن يكون حجمه أقل من 5 ميغابايت**")
-
-    await output[0].edit("**ꪎ︙ جاري صنع امر بورن هوب .. **")
     try:
         response = upload_file(download_location)
     except exceptions.TelegraphException as exc:
@@ -1342,7 +1293,7 @@ async def catbot(event):
     await output[0].delete()
     os.remove(download_location)
     await event.client.send_file(event.chat_id, cat, reply_to=catid)
-@iqthon.on(admin_cmd(pattern="(طقس|الطقس)(?:\s|$)([\s\S]*)"))    
+@matrix.on(admin_cmd(pattern="(طقس|الطقس)(?:\s|$)([\s\S]*)"))    
 async def get_weather(event):   
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     CITY = gvarstatus("DEFCITY") or "Baghdad" if not input_str else input_str
@@ -1391,7 +1342,7 @@ async def get_weather(event):
     kmph = str(wind * 3.6).split(".")
     mph = str(wind * 2.237).split(".")
     await edit_or_reply(event, f"🌡 **درجه الحرارة  : ** `{celsius(curtemp)} سيليزي `\n\n"  + f"🥵 **اعلى درجه حراره :** `{fahrenheit(max_temp)} فهرنايت `\n\n"  + f"🌬 **قوه الرياح :** {kmph[0]} كيلومتر بالساعه \n\n\n" + f"**طقس للمدينه او الدوله الأتيه :**\n" + f"`{cityname}, {fullc_n}`\n" + f"`{time}`\n"    )
-@iqthon.on(admin_cmd(pattern="تحويل رساله(?: |$)(.*)"))
+@matrix.on(admin_cmd(pattern="تحويل رساله(?: |$)(.*)"))
 async def get(event):
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
@@ -1427,7 +1378,7 @@ async def get(event):
     )
     if os.path.exists(file_loc):
         os.remove(file_loc)
-@iqthon.on(admin_cmd(pattern="تحويل ملف صوره(?: |$)(.*)"))
+@matrix.on(admin_cmd(pattern="تحويل ملف صوره(?: |$)(.*)"))
 async def on_file_to_photo(event):
     target = await event.get_reply_message()
     try:
@@ -1458,7 +1409,7 @@ async def on_file_to_photo(event):
     except PhotoInvalidDimensionsError:
         return
     await catt.delete()
-@iqthon.on(admin_cmd(pattern="تحويل ملصق متحرك(?:\s|$)([\s\S]*)"))
+@matrix.on(admin_cmd(pattern="تحويل ملصق متحرك(?:\s|$)([\s\S]*)"))
 async def _(event):  # sourcery no-metrics
     input_str = event.pattern_match.group(1)
     if not input_str:
@@ -1516,7 +1467,7 @@ async def _(event):  # sourcery no-metrics
     for files in (catgif, catfile):
         if files and os.path.exists(files):
             os.remove(files)
-@iqthon.on(admin_cmd(pattern="تحويل متحركه(?: |$)((-)?(r|l|u|d|s|i)?)$"))
+@matrix.on(admin_cmd(pattern="تحويل متحركه(?: |$)((-)?(r|l|u|d|s|i)?)$"))
 async def pic_gifcmd(event):  # sourcery no-metrics
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
@@ -1575,7 +1526,7 @@ async def pic_gifcmd(event):  # sourcery no-metrics
     for i in [final, "Output.gif", imag[1]]:
         if os.path.exists(i):
             os.remove(i)
-@iqthon.on(admin_cmd(pattern="مدينه الطقس(?:\s|$)([\s\S]*)"))    
+@matrix.on(admin_cmd(pattern="مدينه الطقس(?:\s|$)([\s\S]*)"))    
 async def set_default_city(event):
     input_str = event.pattern_match.group(1)
     CITY = gvarstatus("DEFCITY") or "Delhi" if not input_str else input_str
