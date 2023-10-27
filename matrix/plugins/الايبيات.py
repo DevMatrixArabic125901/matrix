@@ -87,7 +87,7 @@ telegraph = Telegraph()
 r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
-FONT_FILE_TO_USE = "matrix/helpers/styles/impact.ttfk"
+FONT_FILE_TO_USE = "matrix/helpers/styles/impact.ttf"
 
 async def get_tz(con):
     if "(Uk)" in con:
