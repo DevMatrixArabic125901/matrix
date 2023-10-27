@@ -49,7 +49,7 @@ async def load_plugins(folder):
 async def startupmessage():
     try:
         if BOTLOG:
-            Config.CATUBLOGO = await matrix.tgbot.send_file(BOTLOG_CHATID, "https://telegra.ph/file/297e31cfb4db45d2fa61a.jpg", caption="᥀ ⦙ تـم تنصـيب سـورس ماتـركس العـربي\n\n᥀ ⦙ اصـدار الـسورس  :  [ 1.2 ] .\n\n᥀ ⦙ للحصول على اوامر السورس\n أرسـل : (  `.اوامري`  ) \n\n᥀ ⦙ القناة الرسمية ماتركس العربي : @MaTrixThon\n",                buttons=[(Button.url("هل تحتاج مساعدة", "https://t.me/MatrixzSupport"),)],            )
+            Config.CATUBLOGO = await matrix.tgbot.send_file(BOTLOG_CHATID, "https://telegra.ph/file/297e31cfb4db45d2fa61a.jpg", caption="᥀ ⦙ تـم تنصـيب سـورس ماتـركس العـربي\n\n᥀ ⦙ اصـدار الـسورس  :  [ 1.2 ]\n\n᥀ ⦙ للحصول على اوامر السورس\n أرسـل : (  `.اوامري`  ) \n\n᥀ ⦙ القناة الرسمية ماتركس العربي : @MaTrixThon\n",                buttons=[(Button.url("هل تحتاج مساعدة", "https://t.me/MatrixSupport"),)],            )
     except Exception as e:
         LOGS.error(e)
         return None
