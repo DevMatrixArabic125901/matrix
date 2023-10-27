@@ -1220,7 +1220,7 @@ async def stats(event):
             catevent,
             output,
             caption=caption        )
-@matrix.iq_cmd(pattern="حفض كتابه$")
+@matrix.ma_cmd(pattern="حفض كتابه$")
 async def saf(e):
     x = await e.get_reply_message()
     if not x:
@@ -1231,7 +1231,7 @@ async def saf(e):
         await e.client.send_message(e.sender_id, x)
     await eor(e, "تم حفظ الرسالة", time=5)
 
-@matrix.iq_cmd(pattern="حفض توجيه$")
+@matrix.ma_cmd(pattern="حفض توجيه$")
 async def saf(e):
     x = await e.get_reply_message()
     if not x:
@@ -2175,8 +2175,8 @@ async def matrixvois(vois):
         await vois.client.send_file(vois.chat_id, matrixvois70 , reply_to=Ti)
         await vois.delete()
 
-@matrix.iq_cmd(pattern="اشتراك")
-async def reda(event):
+@matrix.ma_cmd(pattern="اشتراك")
+async def ahmed(event):
     ty = event.text
     ty = ty.replace(".اشتراك", "")
     ty = ty.replace(" ", "")
@@ -2200,8 +2200,8 @@ async def reda(event):
             await edit_or_reply(event, "**تم تفعيل الاشتراك الاجباري للخاص ✅ **")
     if ty not in ["خاص", "كروب"]:
         return await edit_delete(event, "**قم بكتابة نوع الاشتراك الاجباري خاص او كروب **")
-@matrix.iq_cmd(pattern="تعطيل")
-async def reda (event):
+@matrix.ma_cmd(pattern="تعطيل")
+async def ahmed (event):
     cc = event.text.replace(".تعطيل", "")
     cc = cc.replace(" ", "")
     if len (cc) < 2:
@@ -2221,8 +2221,8 @@ async def reda (event):
     if cc not in ["خاص", "كروب"]:
         return await edit_delete(event, "**قم بكتابة نوع الاشتراك الاجباري لإلغائه ✅ **")
 
-@matrix.iq_cmd(incoming=True)
-async def reda(event):
+@matrix.ma_cmd(incoming=True)
+async def ahmed(event):
     if gvarstatus ("subprivate"):
         if event.is_private:
             try:
@@ -2702,18 +2702,18 @@ async def matrixvois(vois):
         await vois.client.send_file(vois.chat_id, matrixvois92 , reply_to=Ti)
         await vois.delete()
 matrixyouali = False
-@matrix.iq_cmd(pattern="تشغيل حفض الوقتية$")
-async def iqalistart(event):
+@matrix.ma_cmd(pattern="تشغيل حفض الوقتية$")
+async def alistart(event):
     global matrixyouali
     matrixyouali = True
     await edit_or_reply(event, "تم بنجاح تفعيل حفظ  الذاتية من الان")
-@matrix.iq_cmd(pattern="ايقاف حفض الوقتية$")
-async def iqalistop(event):
+@matrix.ma_cmd(pattern="ايقاف حفض الوقتية$")
+async def stop(event):
     global matrixyouali
     matrixyouali = False
     await edit_or_reply(event, "تم بنجاح تعطيل حفظ  الذاتية من الان")
 @matrix.on(    events.NewMessage(        func=lambda e: e.is_private and (e.photo or e.video) and e.media_unread    ))
-async def iqali(event):
+async def start(event):
     global matrixyouali
     if matrixyouali:
         sender = await event.get_sender()
@@ -2813,7 +2813,7 @@ async def memes(mafia):
     for files in (mafiasticker, meme_file):
         if files and os.path.exists(files):
             os.remove(files)
-@matrix.iq_cmd(pattern="كروباتي$")
+@matrix.ma_cmd(pattern="كروباتي$")
 async def gros(event):
     result = await matrix(functions.channels.GetGroupsForDiscussionRequest())
     listiq = []
@@ -2826,7 +2826,7 @@ async def gros(event):
         listiq.append(kno)
     if listiq:
         await matrix.send_message("me", "\n".join(listiq))
-@matrix.iq_cmd(pattern="الحاظرهم$")
+@matrix.ma_cmd(pattern="الحاظرهم$")
 async def bans(event):
     result = await matrix(functions.contacts.GetBlockedRequest(offset=0, limit=1000000))
     listiq = []
@@ -2838,16 +2838,16 @@ async def bans(event):
             listiq.append(kno)
     if listiq:
         await matrix.send_message("me", "\n".join(listiq))
-@matrix.iq_cmd(pattern="قيد (.*)")
-async def kade(event):
+@matrix.ma_cmd(pattern="قيد (.*)")
+async def matrixahmed(event):
     exe = event.text[5:]
     try:
         result = await matrix(            functions.messages.ToggleNoForwardsRequest(peer=exe, enabled=True)        )
         await event.edit("تم بنجاح تفعيل وضع تقييد المحتوى")
     except errors.ChatNotModifiedError as e:
         print(e)  
-@matrix.iq_cmd(pattern="نوعه (.*)")
-async def noah(event):
+@matrix.ma_cmd(pattern="نوعه (.*)")
+async def Type(event):
     exe = event.text[5:]
     x = await matrix.get_entity(exe)
     if hasattr(x, "megagroup") and x.megagroup:
