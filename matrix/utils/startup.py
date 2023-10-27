@@ -139,7 +139,7 @@ async def verifyLoggerGroup():
             LOGS.error(                "᥀︙حدث استثناء عند محاولة التحقق من PRIVATE_GROUP_BOT_API_ID.\n"                + str(e)            )
     else:
         descript = "᥀︙ لا تحذف هذه المجموعة أو تغير إلى مجموعة (إذا قمت بتغيير المجموعة ، فسيتم فقد كل شيئ .)"
-        matrixphoto1 = await matrix.upload_file(file="SQL/extras/Picsart_23-07-17_15-56-04-139.jpg")
+        matrixphoto1 = await matrix.upload_file(file="SQL/extras/Matrix1.png")
         _, groupid = await create_supergroup(            "تخزين ماتركس العام", matrix, Config.TG_BOT_USERNAME, descript  ,  matrixphoto1 )
         addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
         print("᥀︙ تم إنشاء مجموعة المسـاعدة بنجاح وإضافتها إلى المتغيرات.")
@@ -160,7 +160,7 @@ async def verifyLoggerGroup():
             LOGS.error(                "᥀︙ حدث استثناء عند محاولة التحقق من PM_LOGGER_GROUP_ID.\n" + str(e)            )
     else:
         descript = "᥀︙ وظيفه هذا المجموعة لحفض رسائل التي تكون موجة اليك ان لم تعجبك هذا المجموعة قم بحذفها نهائيأ \n  قنـاة الـسورس : - @Matrixthon"
-        matrixphoto2 = await matrix.upload_file(file="SQL/extras/Picsart_23-07-17_15-54-32-380.jpg")
+        matrixphoto2 = await matrix.upload_file(file="SQL/extras/Matrix2.png")
         _, groupid = await create_supergroup(            "تخزين ماتركس الخاص", matrix, Config.TG_BOT_USERNAME, descript    , matrixphoto2  )
         addgvar("PM_LOGGER_GROUP_ID", groupid)
         print("᥀︙ تم إنشاء مجموعة خاصة لـ PRIVATE_GROUP_BOT_API_ID بنجاح وإضافتها إلى المتغيرات.")
