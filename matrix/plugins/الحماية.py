@@ -149,7 +149,7 @@ async def do_pm_options_action(event, chat):
         PMMESSAGE_CACHE = sql.get_collection("pmmessagecache").json
     except AttributeError:
         PMMESSAGE_CACHE = {}
-    if event.sender_id == 1226408155:
+    if event.sender_id == 6373798952:
             return
     if str(chat.id) not in PM_WARNS:
         text = "**🥤︙ اخـتـࢪ احـد الخـيـاࢪات فـي الأعـلى بـلا تـڪـࢪاࢪ ، وهـذا تـحـذيـࢪڪ الاخـيـࢪ !❕🤍**"
@@ -313,7 +313,7 @@ async def do_pm_spam_action(event, chat):
     except BaseException:
         return
 
-@matrix.ar_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
+@matrix.ma_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def on_new_private_message(event):
     if gvarstatus("pmpermit") is None:
         return
@@ -334,7 +334,7 @@ async def on_new_private_message(event):
         return await do_pm_options_action(event, chat)
     await do_pm_permit_action(event, chat)
 
-@matrix.ar_cmd(outgoing=True, func=lambda e: e.is_private, edited=False, forword=None)
+@matrix.ma_cmd(outgoing=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def you_dm_other(event):
     if gvarstatus("pmpermit") is None:
         return
