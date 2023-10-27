@@ -38,7 +38,7 @@ sudo_enabledcmds = sudo_enabled_cmds()
 
 
 class MatrixUserBotClient(TelegramClient):
-    def iq_cmd(
+    def mat_cmd(
         self: TelegramClient,
         pattern: str or tuple = None,
         info: Union[str, Dict[str, Union[str, List[str], Dict[str, str]]]]
