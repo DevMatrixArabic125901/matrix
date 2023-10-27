@@ -109,7 +109,7 @@ def parse(message, old_entities=None):
         return del_surrogate(message), entities + old_entities
     except Exception as e:
         LOGS.info(str(e))
-@matrix.iq_cmd(outgoing=True)
+@matrix.ma_cmd(outgoing=True)
 async def reparse(event):
     old_entities = event.message.entities or []
     parser = partial(parse, old_entities=old_entities)
@@ -125,7 +125,7 @@ async def reparse(event):
                 no_webpage=not bool(event.message.media),
                 entities=msg_entities,            )        )
         raise events.StopPropagation
-@matrix.iq_cmd(outgoing=True)
+@matrix.ma_cmd(outgoing=True)
 async def mention(event):
     newstr = event.text
     if event.entities:
