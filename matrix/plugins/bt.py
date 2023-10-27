@@ -121,7 +121,7 @@ async def _(matrix):
 @matrix.on(admin_cmd(pattern="بوتي$"))
 async def iq(iqbot):
     TG_BOT_USERNAME = Config.TG_BOT_USERNAME
-    await iqbot.reply(f"**بوت تليثون الخاص بك : {TG_BOT_USERNAME}**")
+    await iqbot.reply(f"**بوت ماتركس العربي الخاص بك : {TG_BOT_USERNAME}**")
 @matrix.on(admin_cmd(pattern="ملصقي ?(.*)"))
 async def iq(matrix):
     if matrix.fwd_from:
