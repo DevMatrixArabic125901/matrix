@@ -2403,7 +2403,7 @@ async def catgban(event):  # sourcery no-metrics
 
                 BOTLOG_CHATID,
 
-                f"#حظر عام\
+                f"#حظر عام
 
                 \nمعلومات الحظر :\
 
@@ -2425,7 +2425,7 @@ async def catgban(event):  # sourcery no-metrics
 
                 BOTLOG_CHATID,
 
-                f"#حظر عام\
+                f"#حظر عام
 
                 \nمعلومات الحظر :\
 
@@ -2549,7 +2549,7 @@ async def catgban(event):
 
                 BOTLOG_CHATID,
 
-                f"#الغاء حظر العام\
+                f"#الغاء حظر العام
 
                 \nمعلومات الالغاء :\
 
@@ -2571,7 +2571,7 @@ async def catgban(event):
 
                 BOTLOG_CHATID,
 
-                f"#الغاء حظر العام\
+                f"#الغاء حظر العام
 
                 \nمعلومات الالغاء :\
 
