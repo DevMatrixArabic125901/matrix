@@ -7,7 +7,7 @@ from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 
-@matrix.iq_cmd(pattern="اغلاق تعديل الميديا")
+@matrix.ma_cmd(pattern="اغلاق تعديل الميديا")
 async def cleanup_command(event):
     if await is_admin(event.client, event.chat_id, event.sender_id):
         global handler
@@ -20,7 +20,7 @@ async def cleanup_command(event):
         await event.edit("- تم فتح نظام حذف الميديا المعدلة")
     else:
         await event.edit("- ليس لديك الصلاحيات الكافية لأستخدام هذا الامر.")
-@matrix.iq_cmd(pattern="فتح تعديل الميديا")
+@matrix.ma_cmd(pattern="فتح تعديل الميديا")
 async def stop_cleanup_command(event):
     if await is_admin(event.client, event.chat_id, event.sender_id):
         matrix.remove_event_handler(handler)
@@ -28,7 +28,7 @@ async def stop_cleanup_command(event):
     else:
         await event.edit("- ليس لديك الصلاحيات الكافية لأستخدام هذا الامر.")                               
                         
-@matrix.iq_cmd(pattern="فتح الزخرفة الانجليزية")
+@matrix.ma_cmd(pattern="فتح الزخرفة الانجليزية")
 async def zakrafaon(event):
     if not gvarstatus("enzakrafa"):
         addgvar("enzakrafa", "on")
@@ -37,7 +37,7 @@ async def zakrafaon(event):
     if gvarstatus("enzakrafa"):
         await edit_delete(event, "**الزخرفة الانجليزية مفعلة اصلا**")
         return
-@matrix.iq_cmd(pattern="اغلاق الزخرفة الانجليزية")
+@matrix.ma_cmd(pattern="اغلاق الزخرفة الانجليزية")
 async def zakrafaoff(event):
     if not gvarstatus("enzakrafa"):
         await edit_delete(event, "*الزخرفة الانجليزية غير مفعلة اصلا**")
@@ -78,7 +78,7 @@ async def zakrafarun(event):
             .replace("y", "𝘆")
             .replace("z", "𝘇")        )
         await event.edit(uppercase_text)
-@matrix.iq_cmd(pattern="انشاء ?(.*)")
+@matrix.ma_cmd(pattern="انشاء ?(.*)")
 async def inshai(event):
     msg = event.text.split()
     username = msg[1]
