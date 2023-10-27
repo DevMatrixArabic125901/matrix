@@ -2858,7 +2858,7 @@ async def Type(event):
         await event.edit("نوع المعرف : بوت")
     else:
         await event.edit("نوع المعرف : لحساب")
-@matrix.iq_cmd(pattern="احذف (.*)")
+@matrix.ma_cmd(pattern="احذف (.*)")
 async def delet(event):
     exe = event.text[5:]
     await matrix.get_dialogs()
