@@ -15,7 +15,7 @@ from ..core.session import matrix
 from ..helpers.utils import install_pip
 from ..sql_helper.global_collection import del_keyword_collectionlist, get_item_collectionlist
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-from .matrix import load_module
+from .matrixr import load_module
 from .tools import create_supergroup
 LOGS = logging.getLogger("matrix \n ")
 cmdhr = Config.COMMAND_HAND_LER
