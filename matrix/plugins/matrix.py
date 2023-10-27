@@ -189,7 +189,7 @@ async def amireallyalive(event):
     uptime = await get_readable_time((time.time() - StartTime))
     _, check_sgnirts = check_data_base_heal_th()
     EMOJI_TELETHON = gvarstatus("ALIVE_EMOJI") or " ٍَ 🖤"
-    matrix_ALIVE_TEXT = "❬ ماتركس العربي - MaTriX Arab ، 🕸  ❭ :"
+    matrix_ALIVE_TEXT = "❬ ماتركس العربي - MaTriX Arabic ، 🕸  ❭ :"
     matrix_IMG = gvarstatus("ALIVE_PIC")
     if matrix_IMG:
         CAT = [x for x in matrix_IMG.split()]
@@ -698,7 +698,7 @@ async def matrixteam(event):
 ᥀  اوامر الميمز  ↢ `.م7`
 ᥀  اوامر التسلية ↢ `.م8`
 ᥀  اوامر الوقتية ↢ .`م9`
-᥀  اوامر السوبرات ↢ `.م10`
+᥀  اوامر التكرار ↢ `.م10`
 ᥀  اوامر الاغاني ↢ `.م11`
 ᥀  اوامر التكرار ↢ `.م12`
 ᥀  اوامر الزخرفة ↢ `.م13`
