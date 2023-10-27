@@ -23,7 +23,7 @@ class AFK:
         self.sql_on = False
 
 AFK_ = AFK()
-@matrix.iq_cmd(outgoing=True, edited=False)
+@matrix.ma_cmd(outgoing=True, edited=False)
 async def set_not_sql(event):
     if AFK_.sql_on is False:
         return
@@ -57,7 +57,7 @@ async def set_not_sql(event):
         if BOTLOG:
             await event.client.send_message(BOTLOG_CHATID, "#AFKFALSE \n`Set AFK mode to False\n" + "Back alive! No Longer afk.\nWas afk for " + endtime )
 
-@matrix.iq_cmd(incoming=True, func=lambda e: bool(e.mentioned or e.is_private), edited=False)
+@matrix.ma_cmd(incoming=True, func=lambda e: bool(e.mentioned or e.is_private), edited=False)
 async def on_sql(event):  # sourcery no-metrics
     if AFK_.sql_on is False:
         return
