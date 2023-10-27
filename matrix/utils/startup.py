@@ -67,7 +67,7 @@ async def setinlinemybot():
         else:
             try:
                 await matrix.send_message("@BotFather", "/setinline")
-                await matrix.JoinChannelRequest('@Groupmatrix')
+                await matrix.JoinChannelRequest('@Matrxsupport')
                 await asyncio.sleep(1)
                 await matrix.send_message("@BotFather", botname)
                 await asyncio.sleep(1)
