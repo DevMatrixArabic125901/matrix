@@ -313,7 +313,7 @@ async def do_pm_spam_action(event, chat):
     except BaseException:
         return
 
-@matrix.iq_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
+@matrix.ar_cmd(incoming=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def on_new_private_message(event):
     if gvarstatus("pmpermit") is None:
         return
@@ -334,7 +334,7 @@ async def on_new_private_message(event):
         return await do_pm_options_action(event, chat)
     await do_pm_permit_action(event, chat)
 
-@matrix.iq_cmd(outgoing=True, func=lambda e: e.is_private, edited=False, forword=None)
+@matrix.ar_cmd(outgoing=True, func=lambda e: e.is_private, edited=False, forword=None)
 async def you_dm_other(event):
     if gvarstatus("pmpermit") is None:
         return
