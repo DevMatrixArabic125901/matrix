@@ -60,7 +60,7 @@ async def set_not_afk(event):
         AFK_.afk_on = False
         if BOTLOG:
             await event.client.send_message(                BOTLOG_CHATID,                "#وضع النائم \nتوقف\n"                + "تم الغاء وضع النائم .\nبسبب الرد على الرسائل "                + endtime                + "`",            )
-@matrix.iq_cmd(    incoming=True, func=lambda e: bool(e.mentioned or e.is_private), edited=False)
+@matrix.ma_cmd(    incoming=True, func=lambda e: bool(e.mentioned or e.is_private), edited=False)
 async def on_afk(event):  # sourcery no-metrics
     if AFK_.afk_on is False:
         return
@@ -130,7 +130,7 @@ async def on_afk(event):  # sourcery no-metrics
         resalt += f"\n<b>⌔︙ رابـط الـرسالـة 🔗  : </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> الرابط</a>"
         if not event.is_private:
             await event.client.send_message(                Config.PM_LOGGER_GROUP_ID,                resalt,                parse_mode="html",                link_preview=False,            )
-@matrix.iq_cmd(    pattern=f"{sleeping}(?:\s|$)([\s\S]*)",)
+@matrix.ma_cmd(    pattern=f"{sleeping}(?:\s|$)([\s\S]*)",)
 async def _(event):
     AFK_.USERAFK_ON = {}
     AFK_.afk_time = None
