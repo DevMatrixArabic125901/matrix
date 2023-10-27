@@ -36,7 +36,7 @@ PATH = "./matrix/sql_matrix/ytsearch.json"
 plugin_category = "bot"
 
 
-@matrix.ar_cmd(
+@matrix.ma_cmd(
     pattern="iytdl(?:\s|$)([\s\S]*)",
     command=("iytdl", plugin_category),
     info={
