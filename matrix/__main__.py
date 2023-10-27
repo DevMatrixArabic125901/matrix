@@ -8,6 +8,8 @@ from .core.logger import logging
 from .core.session import matrix
 from .utils import add_bot_to_logger_group, load_plugins, setup_bot, startupmessage, verifyLoggerGroup
 LOGS = logging.getLogger("MATRIX")
+print(matrix.__copyright__)
+print("المرخصة بموجب شروط " + matrix.__license__)
 cmdhr = Config.COMMAND_HAND_LER
 try:
     LOGS.info("بدء تنصيب ماتركس العربي")
@@ -16,6 +18,23 @@ try:
 except Exception as e:
     LOGS.error(f"{str(e)}")
     sys.exit()
+
+try:
+    LOGS.info("يتم تفعيل وضع الانلاين")
+    matrix.loop.run_until_complete(setinlinemybot())
+    LOGS.info("تم تفعيل وضع الانلاين بنجاح ✓")
+except Exception as e:
+    LOGS.error(f"{str(e)}")
+    sys.exit()    
+try:
+    LOGS.info("يتم تفعيل القنوات")
+    matrix.loop.run_until_complete(matrixteam())
+    LOGS.info("تم تفعيل القنوات ✓")
+except Exception as e:
+    LOGS.error(f"{str(e)}")
+    sys.exit()
+
+
 class CatCheck:
     def __init__(self):
         self.sucess = True
