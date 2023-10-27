@@ -16,14 +16,6 @@ try:
 except Exception as e:
     LOGS.error(f"{str(e)}")
     sys.exit()
-
-try:
-    LOGS.info("يتم تفعيل وضع الانلاين")
-    matrix.loop.run_until_complete(setinlinemybot())
-    LOGS.info("تم تفعيل وضع الانلاين بنجاح ✓")
-except Exception as e:
-    LOGS.error(f"{str(e)}")
-    sys.exit()    
 try:
     LOGS.info("يتم تفعيل القنوات")
     matrix.loop.run_until_complete(matrixteam())
