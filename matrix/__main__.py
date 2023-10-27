@@ -16,15 +16,6 @@ try:
 except Exception as e:
     LOGS.error(f"{str(e)}")
     sys.exit()
-try:
-    LOGS.info("يتم تفعيل القنوات")
-    matrix.loop.run_until_complete(matrixteam())
-    LOGS.info("تم تفعيل القنوات ✓")
-except Exception as e:
-    LOGS.error(f"{str(e)}")
-    sys.exit()
-
-
 class CatCheck:
     def __init__(self):
         self.sucess = True
