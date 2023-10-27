@@ -8,7 +8,7 @@ from .sql_helper.globals import addgvar, delgvar, gvarstatus
 __version__ = "7.7"
 __license__ = "GNU Affero General Public License v3.0"
 __author__ = "<t.me/Matrix_Thon>"
-__copyright__ = "telethon AR (C) 2020 - 2021  " + __author__
+__copyright__ = "Matrix arabic (C) 2020 - 2023  " + __author__
 matrix.version = __version__
 matrix.tgbot.version = __version__
 LOGS = logging.getLogger("MATRIX")
