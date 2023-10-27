@@ -1,3 +1,4 @@
+import asyncio
 import glob
 import os
 import sys
@@ -8,15 +9,17 @@ from pathlib import Path
 from telethon import Button, functions, types, utils
 from matrix import BOTLOG, BOTLOG_CHATID, PM_LOGGER_GROUP_ID
 from ..Config import Config
+from telethon.tl.functions.channels import JoinChannelRequest
 from ..core.logger import logging
 from ..core.session import matrix
 from ..helpers.utils import install_pip
 from ..sql_helper.global_collection import del_keyword_collectionlist, get_item_collectionlist
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-from .matrixr import load_module
+from .matrix import load_module
 from .tools import create_supergroup
-LOGS = logging.getLogger("MATRIX \n ")
+LOGS = logging.getLogger("matrix \n ")
 cmdhr = Config.COMMAND_HAND_LER
+TG_BOT = Config.TG_BOT_USERNAME
 async def load_plugins(folder):
     path = f"matrix/{folder}/*.py"
     files = glob.glob(path)
@@ -42,14 +45,39 @@ async def load_plugins(folder):
                     os.remove(Path(f"matrix/{folder}/{shortname}.py"))
             except Exception as e:
                 os.remove(Path(f"matrix/{folder}/{shortname}.py"))
-                LOGS.info(f"᥀︙غير قادر على التحميل {shortname} يوجد هناك خطا بسبب : {e}"                )
+                LOGS.info(f"᥀ ︙غير قادر على التحميل {shortname} يوجد هناك خطا بسبب : {e}"                )
 async def startupmessage():
     try:
         if BOTLOG:
-            Config.CATUBLOGO = await matrix.tgbot.send_file(BOTLOG_CHATID, "https://telegra.ph/file/297e31cfb4db45d2fa61a.jpg", caption="᥀ ⦙ تـمّ  اعـادة تشـغيل\n  ماتركس العربي ✓  :  [ 1.2 ] .\n\n᥀ ⦙ للحصول على اوامر السورس\n أرسـل : (  `.اوامري`  ) \n\n᥀ ⦙ القناة الرسمية ماتركس العربي : @MaTrixThon\n",                buttons=[(Button.url("هل تحتاج مساعدة", "https://t.me/MatrixzSupport"),)],            )
+            Config.CATUBLOGO = await matrix.tgbot.send_file(BOTLOG_CHATID, "https://telegra.ph/file/297e31cfb4db45d2fa61a.jpg", caption="᥀ ⦙ تـم تنصـيب سـورس ماتـركس العـربي\n\n᥀ ⦙ اصـدار الـسورس  :  [ 1.2 ] .\n\n᥀ ⦙ للحصول على اوامر السورس\n أرسـل : (  `.اوامري`  ) \n\n᥀ ⦙ القناة الرسمية ماتركس العربي : @MaTrixThon\n",                buttons=[(Button.url("هل تحتاج مساعدة", "https://t.me/MatrixzSupport"),)],            )
     except Exception as e:
         LOGS.error(e)
         return None
+
+async def setinlinemybot():
+    try:
+        inlinestarbot = await matrix.tgbot.get_me()
+        bot_name = inlinestarbot.first_name
+        botname = f"@{inlinestarbot.username}"
+        Matrix = "Matrix arabic"
+        if bot_name.endswith("Assistant"):
+            print("تم تشغيل البوت")
+        if inlinestarbot.bot_inline_placeholder:
+            print("Matrix arabic")
+        else:
+            try:
+                await matrix.send_message("@BotFather", "/setinline")
+                await matrix.JoinChannelRequest('@Groupmatrix')
+                await asyncio.sleep(1)
+                await matrix.send_message("@BotFather", botname)
+                await asyncio.sleep(1)
+                await matrix.send_message("@BotFather", Matrix)
+                await asyncio.sleep(2)
+            except Exception as e:
+                print(e)
+    except Exception as e:
+        print(e)
+
 async def add_bot_to_logger_group(chat_id):
     bot_details = await matrix.tgbot.get_me()
     try:
@@ -67,7 +95,7 @@ async def setup_bot():
         for option in config.dc_options:
             if option.ip_address == matrix.session.server_address:
                 if matrix.session.dc_id != option.id:
-                    LOGS.warning(                        f"᥀︙ معرف DC ثابت في الجلسة من {matrix.session.dc_id}"                        f"᥀︙ يتبع ل {option.id}"                    )
+                    LOGS.warning(                        f"᥀ ︙ معرف DC ثابت في الجلسة من {matrix.session.dc_id}"                        f"᥀ ︙ يتبع ل {option.id}"                    )
                 matrix.session.set_dc(option.id, option.ip_address, option.port)
                 matrix.session.save()
                 break
@@ -82,7 +110,7 @@ async def setup_bot():
         LOGS.error(f"قم بتغير كود تيرمكس - {str(e)}")
         sys.exit()
 
-async def matrixarabic():
+async def iqchn():
     try:
         os.environ[            "STRING_SESSION"        ] = "**⎙ :: انتبه عزيزي المستخدم هذا الملف ملغم يمكنه اختراق حسابك لم يتم تنصيبه في حسابك لا تقلق.**"
     except Exception as e:
