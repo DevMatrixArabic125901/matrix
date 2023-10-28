@@ -192,7 +192,7 @@ async def matrixteam(matrixevent):
 
     _, check_sgnirts = check_data_base_heal_th()
 
-    EMOJI = gvarstatus("ALIVE_EMOJI") or "᥀︙  "
+    EMOJI = gvarstatus("ALIVE_EMOJI") or "᥀︙ "
 
     ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "𝖶𝖾𝗅𝖼𝗈𝗆 𝖬𝖺𝗍𝗋𝗂x 𝖠𝗋𝖺𝖻𝗂𝖼"
 
