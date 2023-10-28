@@ -23,7 +23,9 @@ from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
 from . import mention
 
-@matrix.ma_cmd(pattern="فحص(?:\s|$)([\s\S]*)")
+ALIVE = gvarstatus("OR_ALIVE") or "(فحص|السورس)"
+
+@matrix.on(admin_cmd(pattern=f"{ALIVE}(?: |$)(.*)"))
 async def amireallyalive(matrix):
     reply_to_id = await reply_id(matrix)
     uptime = await get_readable_time((time.time() - StartTime))
