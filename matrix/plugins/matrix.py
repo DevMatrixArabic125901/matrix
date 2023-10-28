@@ -211,7 +211,6 @@ async def amireallyalive(event):
         ping=ping,
         MATRIXTM=MATRIXTM,
         tg_bot=tg_bot,    )
-    )
     if MATRIX_IMG:
         matrix = [x for x in MATRIX_IMG.split()]
         PIC = random.choice(matrix)
