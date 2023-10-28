@@ -218,7 +218,7 @@ async def matrixteam(matrixevent):
 
         uptime=uptime,
 
-        telever=version.__version__,
+        matrix=version.__version__,
 
         catver=catversion,
 
