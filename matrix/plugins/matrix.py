@@ -3338,14 +3338,14 @@ async def repomatrix(matrix):
 
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="(اوامري|أوامري)(?: |$)(.*)"))
+@bot.on(admin_cmd(outgoing=True, pattern="(أوامري|اوامري)(?: |$)(.*)"))
 async def repomatrix(matrix):
     if matrix.fwd_from:
         return
     TG_BOT = Config.TG_BOT_USERNAME
-    if matrix.reply_to_msg_id:
+    if iqthon.reply_to_msg_id:
         await matrix.get_reply_message()
-        inline_query(TG_BOT, "(أوامري|اوامري)(?: |$)(.*)")
+    response = await bot.inline_query(TG_BOT, "(الاوامر|اوامر)(?: |$)(.*)")
     await response[0].click(matrix.chat_id)
     await matrix.delete()
 
@@ -3358,14 +3358,13 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         query = matrix.text
         await bot.get_me()
         
-        if query.startswith("(اوامري|أوامري)(?: |$)(.*)") and matrix.query.user_id == bot.uid:
+        if query.startswith("(أوامري|اوامري)(?: |$)(.*)") and matrix.query.user_id == bot.uid:
             try:
-                buttons = [[Button.inline("اوامر السورس", data="order1"), Button.inline("اوامر الحساب", data="ord1hs"),],[Button.inline("اوامر الكروب", data="ord1G"), Button.inline("اوامر الالعاب", data="ord1pl"),],[Button.inline("اوامر الصيغ", data="ordsag1"), Button.inline("اوامر الاغاني", data="ordSONG"),], [Button.inline("اسم وقتي", data="order13"), Button.inline("اوامر الاعلانات", data="ordahln1"),],[Button.inline("اوامر التسليه", data="order14"),],[Button.inline("الفارات", data="ordvars"),]]
+                buttons = [[Button.inline("‹ اوامر السورس ›", data="order1"), Button.inline("‹ اوامر الحساب ›", data="ord1hs"),],[Button.inline("‹ اوامر الكروب ›", data="ord1G"), Button.inline("‹ اوامر الالعاب ›", data="ord1pl"),],[Button.inline("‹ اوامر الصيغ ›", data="ordsag1"), Button.inline("‹ اوامر الاغاني ›", data="ordSONG"),], [Button.inline("‹ اسم وقتي ›", data="order13"), Button.inline("‹ اوامر الاعلانات ›", data="ordahln1"),],[Button.inline("‹ اوامر التسليه ›", data="order14"),],[Button.inline("‹ الفارات ›", data="ordvars"),]]
                 result = builder.article(title="matrix",text=help2,buttons=buttons,link_preview=False)
-                await matrix.answer([result] if result else None) 
+                await matrix.answer([result] if result else None)
             except BotInlineDisabledError: 
-                await matrix.send_message( "يجب تفعيل الاونلاين من بوت فاذر اولا")
-
+                await matrix.send_message( "يجب تفعيل الاونلاين من بوت فاذر اولا " )
 
 
 @matrix.on(events.NewMessage(pattern=".كشف همسة"))
