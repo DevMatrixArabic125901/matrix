@@ -8636,3 +8636,19 @@ async def ma(mention):
     my_mention = f"[{me.first_name}](tg://user?id={me.id})"
 
     await edit_or_reply(mention, f"**᥀ ¦ المستخدم ⪼ • ** [{mat2}](tg://user?id={user.id}) \n ☑️ **¦  تـم رفـعه غـبي 🛏️ .** \n**🍚 ¦ بواسطه  : ** {my_mention} ")
+
+
+@bot.on(admin_cmd(outgoing=True, pattern="(أوامري|اوامري)"))
+async def repomatrix(matrix):
+    if matrix.fwd_from:
+        return
+    TG_BOT = Config.TG_BOT_USERNAME
+    
+    if matrix.reply_to_msg_id:
+        try:
+            await matrix.get_reply_message()
+            response = await bot.inline_query(TG_BOT, "(اوامري|أوامري)")
+            await response[0].click(matrix.chat_id)
+            await matrix.delete()
+        except BotInlineDisabledError: 
+            await matrix.send_message( "يجب تفعيل الاونلاين من بوت فاذر اولا" )
