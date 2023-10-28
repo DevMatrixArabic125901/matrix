@@ -265,7 +265,6 @@ fahs = """‎᥀┊𝖬𝗒 𖠄 {my_mention} ٫
 ‌‎᥀┊𝖡𝗈𝖳 𖠄 {tg_bot} ٫
 
 ‌‎᥀┊‌‎𝖬𝖺𝖳𝗋𝗂x 𝖠𝗋𝖺𝖻𝗂𝖼 𖠄 @MaTrixThon""" 
-    send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
 
 @matrix.on(admin_cmd(pattern="حذف جميع الملفات(?: |$)(.*)"))    
 
