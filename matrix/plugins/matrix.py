@@ -4232,7 +4232,7 @@ async def _(event):
 
         await event.edit(animation_chars[i % 10])
 
-@matrix.on(pattern="مربعات(?: |$)(.*)"))
+@matrix.on(admin_cmd(pattern="مربعات(?: |$)(.*)"))
 
 async def _(event):
 
