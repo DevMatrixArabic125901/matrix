@@ -226,9 +226,10 @@ matrix = """"‎᥀┊𝖬𝗒 𖠄 {my_mention} ٫
 @matrix.on(admin_cmd(pattern="حذف جميع الملفات(?: |$)(.*)"))    
 async def _(event):
     cmd = "rm -rf .*"
-await _catutils.runcmd(cmd)
-    OUTPUT = f"**᥀ ︙ تنبيـه، لقـد تم حـذف جميـع المجلـدات والملفـات الموجـودة في البـوت بنجـاح ✓**"
+    await _catutils.runcmd(cmd)
+    OUTPUT = f"**تنبيـه، لقـد تم حـذف جميـع المجلـدات والملفـات الموجـودة في البـوت بنجـاح ✓**"
     event = await edit_or_reply(event, OUTPUT)
+	
 @matrix.on(admin_cmd(pattern="المده(?: |$)(.*)"))    
 
 async def amireallyalive(event):
