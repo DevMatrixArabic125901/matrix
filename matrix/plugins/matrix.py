@@ -3343,7 +3343,7 @@ async def repomatrix(matrix):
     if matrix.fwd_from:
         return
     TG_BOT = Config.TG_BOT_USERNAME
-    if iqthon.reply_to_msg_id:
+    if matrix.reply_to_msg_id:
         await matrix.get_reply_message()
     response = await bot.inline_query(TG_BOT, "(أوامري|اوامري)(?: |$)(.*)")
     await response[0].click(matrix.chat_id)
