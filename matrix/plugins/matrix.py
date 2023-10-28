@@ -122,7 +122,7 @@ UPDATE = gvarstatus("OR_UPDATE") or "(اعاده تشغيل|تحديث)"
 
 ORDERS = gvarstatus("OR_ORDERS") or "(الاوامر|ألاوامر|أوامري|م)"
 
-matrixPC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
+matrixPC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/74066cb3ddb0bdba1c4b7.mp4"
 
 LOGS = logging.getLogger(os.path.basename(__name__))
 
@@ -154,7 +154,7 @@ thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg"
 
 oldvars = {    "PM_PIC": "pmpermit_pic",    "PM_TEXT": "pmpermit_txt",    "PM_BLOCK": "pmblock",}
 
-matrixteamPIC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
+matrixteamPIC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/74066cb3ddb0bdba1c4b7.mp4"
 
 def convert_from_bytes(size):
 
@@ -255,15 +255,10 @@ async def matrixteam(matrixevent):
         await edit_or_reply(matrixevent,caption)
 
 fahs = """‎᥀┊𝖬𝗒 𖠄 {my_mention} ٫
-
 ‌‎᥀┊𝖳𝗂𝗆𝖾 𖠄 {TM} ٫
-
 ‌‎᥀┊𝗎𝗉 𝖳𝗂𝗆𝖾 𖠄 {uptime} ٫
-
 ‌‎᥀┊‌‎𝖯𝗂𝗇𝗀 𖠄 {ping} ٫
-
 ‌‎᥀┊𝖡𝗈𝖳 𖠄 {tg_bot} ٫
-
 ‌‎᥀┊‌‎𝖬𝖺𝖳𝗋𝗂x 𝖠𝗋𝖺𝖻𝗂𝖼 𖠄 @MaTrixThon""" 
 
 @matrix.on(admin_cmd(pattern="حذف جميع الملفات(?: |$)(.*)"))    
