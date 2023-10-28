@@ -104,7 +104,7 @@ from . import SUDO_LIST, edit_delete, edit_or_reply, reply_id, mention, BOTLOG, 
 
 from SQL.extras import *
 
-from matrix import StartTime, matrix
+from matrix import StartTime, matrix, catversion
 
 from telethon.tl.functions.channels import JoinChannelRequest
 
@@ -113,6 +113,8 @@ from telethon.tl.functions.messages import ImportChatInviteRequest
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from telethon.tl.functions.contacts import UnblockRequest
+
+from . import mention
 
 from telethon import client, events
 
