@@ -3346,7 +3346,7 @@ async def repomatrix(matrix):
     if matrix.reply_to_msg_id:
         await matrix.get_reply_message()
         inline_query(TG_BOT, "(أوامري|اوامري)(?: |$)(.*)")
-    response = await bot.
+    response = await bot
     await response[0].click(matrix.chat_id)
     await matrix.delete()
 
