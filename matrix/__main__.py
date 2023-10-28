@@ -16,6 +16,14 @@ try:
 except Exception as e:
     LOGS.error(f"{str(e)}")
     sys.exit()
+
+try:
+    LOGS.info("يتم تفعيل الاونلاين")
+    matrix.loop.run_until_complete(setup_bot())
+    LOGS.info("تم تفعيل الاونلاين")
+except Exception as e:
+    LOGS.error(f"{str(e)}")
+    sys.exit()
 class CatCheck:
     def __init__(self):
         self.sucess = True
