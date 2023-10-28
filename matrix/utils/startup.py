@@ -54,7 +54,7 @@ async def startupmessage():
         LOGS.error(e)
         return None
 
-async def setinlinemybot():
+async def inlinematrix():
     try:
         inlinestarbot = await matrix.tgbot.get_me()
         bot_name = inlinestarbot.first_name
