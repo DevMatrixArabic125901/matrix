@@ -4064,7 +4064,7 @@ async def gbun(event):
         usname = replied_user.user.username
         idd = reply_message.sender_id
         if idd == 6373798952:
-            await catevent.edit(                "عذرا هذا مبرمج السورس كلاينر"            )
+            await catevent.edit(                "عذرا هذا مبرمج السورس احمد"            )
         else:
             jnl = (                "تم حظر المستخدم :"  "[{}](tg://user?id={})"  "\n\n"                "**اسم الشخص  : ** __{}__\n"                "**ايدي الشخص : ** `{}`\n" ).format(firstname, idd, firstname, idd)
             if usname is None:
@@ -4466,19 +4466,6 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 6])
-@matrix.on(admin_cmd(pattern="مصه(?:\s|$)([\s\S]*)"))
-async def ma(mention):
-    user, custom = await get_user_from_event(mention)
-    if not user:
-        return
-    if user.id == 6373798952:
-        return await edit_or_reply(mention, f"**- هذا مبرمج السورس  **")
-    mat2 = user.last_name.replace("\u2060", "") if user.last_name else user.username
-    me = await mention.client.get_me()
-    my_first = me.first_name
-    mat = user.first_name.replace("\u2060", "") if user.first_name else user.username
-    my_mention = f"[{me.first_name}](tg://user?id={me.id})"
-    await edit_or_reply(mention, f"** ⣠⡶⠚⠛⠲⢄⡀\n⣼⠁      ⠀⠀⠀⠳⢤⣄\n⢿⠀⢧⡀⠀⠀⠀⠀⠀⢈⡇\n⠈⠳⣼⡙⠒⠶⠶⠖⠚⠉⠳⣄\n⠀⠀⠈⣇⠀⠀⠀⠀⠀⠀⠀⠈⠳⣄\n⠀⠀⠀⠘⣆       ⠀⠀⠀⠀⠀⠈⠓⢦⣀\n⠀⠀⠀⠀⠈⢳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠲⢤\n⠀⠀⠀⠀⠀⠀⠙⢦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢧\n⠀⠀⠀⠀⠀⠀⠀    ⠓⠦⠀⠀⠀⠀**\n**᥀ ¦ تعال مصه عزيزي ** [{mat}{mat2}](tg://user?id={user.id}) ")
 @matrix.on(admin_cmd(pattern="اركضلي(?: |$)(.*)"))
 async def _(event):
     catevent = await edit_or_reply(event, "**اركضلي يابه**")
