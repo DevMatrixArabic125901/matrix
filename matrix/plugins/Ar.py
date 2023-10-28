@@ -43,7 +43,6 @@ async def amireallyalive(matrix):
     matrixiq_caption = gvarstatus("ALIVE_MATRIXTMATRIXT") or matrix
     caption = matrixiq_caption.format(        ALIVE_TEXT=ALIVE_TEXT,
         EMOJI=EMOJI,
-        EMOJI=EMOJI,
         my_mention=my_mention,
         uptime=uptime,
         mention=mention,
