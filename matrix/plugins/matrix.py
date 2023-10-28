@@ -201,7 +201,7 @@ async def amireallyalive(event):
     caption = matrixiq_caption.format(
         ALIVE_TEXT=ALIVE_TEXT,
         EMOJI=EMOJI,
-        my_mention=my_mention,
+        my_mention=mention,
         uptime=uptime,
         mention=mention,
         telever=version.__version__,
