@@ -3367,14 +3367,6 @@ if query.startswith("(اوامري|أوامري)(?: |$)(.*)") and matrix.query.u
             except BotInlineDisabledError: 
                 await matrix.send_message( "يجب تفعيل الاونلاين من بوت فاذر اولا ")
 
-        if query.startswith("اوامر الحساب(?: |$)(.*)") and matrix.query.user_id == bot.uid:
-
-            buttons = [[Button.inline("اوامر الحساب", data="ord1hs"),]]
-
-            result = builder.article(title="matrix", text=help2, buttons=buttons, link_preview=False)
-
-            await matrix.answer([result] if result else None)
-
 
 
 @matrix.on(events.NewMessage(pattern=".كشف همسة"))
