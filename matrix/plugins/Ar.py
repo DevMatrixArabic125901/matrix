@@ -36,7 +36,7 @@ async def amireallyalive(matrix):
     ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "𝖶𝖾𝗅𝖼𝗈𝗆 𝖬𝖺𝗍𝗋𝗂x 𝖠𝗋𝖺𝖻𝗂𝖼"
     MATRIX_IMG = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
     tg_bot = Config.TG_BOT_USERNAME
-    me = await matrixthonevent.client.get_me()
+    me = await matrixevent.client.get_me()
     my_last = me.last_name
     my_mention = f"[{me.last_name}](tg://user?id={me.id})"
     MATRIXTM = time.strftime("%I:%M")
