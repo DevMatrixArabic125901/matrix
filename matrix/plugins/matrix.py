@@ -255,7 +255,7 @@ async def matrixteam(matrixevent):
         await edit_or_reply(matrixevent,caption)
 
 fahs = """‎᥀┊𝖬𝗒 𖠄 {my_mention} ٫
-‌‎᥀┊𝖳𝗂𝗆𝖾 𖠄 {TM} ٫
+‌‎᥀┊𝖳𝗂𝗆𝖾 𖠄 {MATRIXTM} ٫
 ‌‎᥀┊𝗎𝗉 𝖳𝗂𝗆𝖾 𖠄 {uptime} ٫
 ‌‎᥀┊‌‎𝖯𝗂𝗇𝗀 𖠄 {ping} ٫
 ‌‎᥀┊𝖡𝗈𝖳 𖠄 {tg_bot} ٫
