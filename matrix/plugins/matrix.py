@@ -122,7 +122,7 @@ UPDATE = gvarstatus("OR_UPDATE") or "(اعاده تشغيل|تحديث)"
 
 ORDERS = gvarstatus("OR_ORDERS") or "(الاوامر|ألاوامر|أوامري|م)"
 
-matrixPC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/74066cb3ddb0bdba1c4b7.mp4"
+matrixPC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
 
 LOGS = logging.getLogger(os.path.basename(__name__))
 
@@ -154,7 +154,7 @@ thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg"
 
 oldvars = {    "PM_PIC": "pmpermit_pic",    "PM_TEXT": "pmpermit_txt",    "PM_BLOCK": "pmblock",}
 
-matrixteamPIC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/74066cb3ddb0bdba1c4b7.mp4"
+matrixteamPIC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
 
 def convert_from_bytes(size):
 
@@ -177,7 +177,7 @@ def convert_from_bytes(size):
 
 
 @matrix.on(admin_cmd(pattern=f"{ALIVE}(?: |$)(.*)"))     
-async def iq(matrixevent):
+async def mat(matrixevent):
     reply_to_id = await reply_id(matrixevent)
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
