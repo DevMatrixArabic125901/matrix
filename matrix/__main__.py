@@ -19,7 +19,7 @@ except Exception as e:
 
 try:
     LOGS.info("يتم تفعيل الاونلاين")
-    matrix.loop.run_until_complete(setup_bot())
+    matrix.loop.run_until_complete(inlinematrix())
     LOGS.info("تم تفعيل الاونلاين")
 except Exception as e:
     LOGS.error(f"{str(e)}")
