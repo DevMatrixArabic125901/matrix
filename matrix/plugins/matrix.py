@@ -3363,9 +3363,9 @@ if query.startswith("(اوامري|أوامري)(?: |$)(.*)") and matrix.query.u
             try:
                 buttons = [[Button.inline("اوامر السورس", data="order1"), Button.inline("اوامر الحساب", data="ord1hs"),],[Button.inline("اوامر الكروب", data="ord1G"), Button.inline("اوامر الالعاب", data="ord1pl"),],[Button.inline("اوامر الصيغ", data="ordsag1"), Button.inline("اوامر الاغاني", data="ordSONG"),], [Button.inline("اسم وقتي", data="order13"), Button.inline("اوامر الاعلانات", data="ordahln1"),],[Button.inline("اوامر التسليه", data="order14"),],[Button.inline("الفارات", data="ordvars"),]]
                 result = builder.article(title="matrix",text=help2,buttons=buttons,link_preview=False)
-                await matrix.answer([result] if result else None)
+                await matrix.answer([result] if result else None) 
             except BotInlineDisabledError: 
-                await matrix.send_message( "يجب تفعيل الاونلاين من بوت فاذر اولا ")
+                await matrix.send_message( "يجب تفعيل الاونلاين من بوت فاذر اولا")
 
 
 
