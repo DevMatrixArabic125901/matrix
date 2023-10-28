@@ -40,8 +40,8 @@ async def amireallyalive(matrix):
     my_last = me.last_name
     my_mention = f"[{me.last_name}](tg://user?id={me.id})"
     MATRIXTM = time.strftime("%I:%M")
-    matrixiq_caption = gvarstatus("ALIVE_MATRIXTMATRIXT") or matrix
-    caption = matrixiq_caption.format(        ALIVE_TEXT=ALIVE_TEXT,
+    matrixcaption = gvarstatus("ALIVE_MATRIXTMATRIXT") or matrix
+    caption = matrixcaption.format(        ALIVE_TEXT=ALIVE_TEXT,
         EMOJI=EMOJI,
         my_mention=my_mention,
         uptime=uptime,
