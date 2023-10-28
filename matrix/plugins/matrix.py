@@ -2167,7 +2167,7 @@ game_code = ["تيك توك اثنان", "تيك توك اربعه", "ربط أ�
 
 @matrix.ma_cmd(pattern="رابط الحذف")
 async def _(ahmed):
-    await edit_or_reply (ahmed, "**رابـط الحـذف ↬** https://telegram.org/deactivate \n\n ** بـوت الحـذف  ↬** @LC6BOT ")
+    await edit_or_reply (ahmed, "**رابـط الحـذف ↬** https://telegram.org/deactivate")
 
 @matrix.on(admin_cmd(pattern="طوبه(?: |$)(.*)"))
 async def _(event):
@@ -2189,7 +2189,7 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 10])
-@matrix.on(admin_cmd(pattern="مربعات(?: |$)(.*)"))
+@matrix.on(adpattern="مربعات(?: |$)(.*)"))
 async def _(event):
     "أمر الرسوم المتحركة"
     animation_interval = 0.3
