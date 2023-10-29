@@ -24,12 +24,11 @@ from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
 from . import mention
 
-ALIVE = gvarstatus("OR_ALIVE") or "(فحص|السورس)"
-
 matrix_uptime, start_time = None, None
 
-@matrix.on(event.NewMessage(outgoing=True, pattern=f'.{ALIVE}'))
-async def CheckUpTime(event):
+@matrix.ma_cmd(pattern="فحص(?:\s|$)([\s\S]*)")
+async def matrixar(event):
+    reply_to_id = await reply_id(event)
     global start_time, matrix_uptime
     
     delete = await event.delete()
