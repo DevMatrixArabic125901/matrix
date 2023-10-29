@@ -1,4 +1,4 @@
-هلimport random
+import random
 import re
 import base64
 import time
