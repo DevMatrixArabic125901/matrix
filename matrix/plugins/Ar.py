@@ -51,7 +51,7 @@ async def matrixar(event):
         matrix = [x for x in MATRIX_IMG.split()]
         PIC = random.choice(matrix)
         try:
-            await matrixevent.delete()
+            await event.delete()
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(event)
     else:
