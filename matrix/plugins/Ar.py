@@ -63,5 +63,6 @@ async def matrixar(event):
 ‌‎⿻┊BoT : {tg_bot}
 ‌‎⿻┊PyThon : 3.8
 ‌‎⿻┊‌‎PinG : {ping}
-⿻┊‌‎Varsion : (1.2)"""
+⿻┊‌‎Varsion : (1.2)
+‌‎⿻┊‌(MaTrix AraBiC)(https://t.me/matrixthon)"""
     send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
