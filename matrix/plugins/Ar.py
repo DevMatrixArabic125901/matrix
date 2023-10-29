@@ -25,7 +25,7 @@ from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
 from . import mention
 
-random_media = ["https://telegra.ph/file/74066cb3ddb0bdba1c4b7.mp4"]
+random_media = ["https://telegra.ph/file/74066cb3ddb0bdba1c4b7.mp4","https://telegra.ph/file/20cc5275397d21790162b.mp4"]
 
 matrix_uptime, start_time = None, None
 
@@ -50,19 +50,29 @@ async def matrixar(event):
     start = datetime.now()
     end = datetime.now()
     MATRIXTM = time.strftime("%I:%M")
+    file_path = "installation_date.txt"
+if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
+    with open(file_path, "r") as file:
+        installation_time = file.read().strip()
+else:
+    installation_time = datetime.now().strftime("%Y-%m-%d")
+    with open(file_path, "w") as file:
+        file.write(installation_time)
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     my_mention=my_mention,
     MATRIXTM=MATRIXTM
+    MATRIXDATE=installation_time
     ping=ms
         
     final_message = f"""
 ‌‎⿻┊NamE : {user.first_name}
 ‌‎⿻┊TimE : {MATRIXTM}
+‌‎⿻┊DaTE : {tg_bot}
 ‌‎⿻┊UpTimE : {uptime}
 ‌‎⿻┊BoT : {tg_bot}
 ‌‎⿻┊PyThon : 3.8
 ‌‎⿻┊‌‎PinG : {ping}
-⿻┊‌‎Varsion : (1.2)
+⿻┊‌‎VarSioN : (1.2)
 ‌‎⿻┊‌[MaTrix AraBic](https://t.me/matrixthon)"""
     send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
