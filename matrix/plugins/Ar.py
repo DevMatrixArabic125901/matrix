@@ -49,7 +49,7 @@ async def amireallyalive(matrix):
         uptime=uptime,
         mention=mention,
         telever=version.__version__,
-        catver=catversion,
+        version=catversion,
         pyver=python_version(),
         dbhealth=check_sgnirts,
         ping=ping,
