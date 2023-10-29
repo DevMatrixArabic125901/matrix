@@ -1,178 +1,92 @@
 import os
-
 import aiohttp
-
 import requests
-
 import random
-
 import re
-
 import time
-
 import sys
-
 import asyncio
-
 import math
-
 import heroku3
-
 import urllib3
-
 import speedtest
-
 import base64
-
 import psutil
-
 import platform
-
 from telethon.errors.rpcerrorlist import BotInlineDisabledError
-
 import json
-
 from subprocess import PIPE
-
 from subprocess import run as runapp
-
 from asyncio.exceptions import CancelledError
-
 from time import sleep
-
 from platform import python_version
-
 from github import Github
-
 from pySmartDL import SmartDL
-
 from pathlib import Path
-
 from telethon.errors import QueryIdInvalidError
-
 from telethon.errors import QueryIdInvalidError
-
 from telethon.tl.types import InputMessagesFilterDocument
-
 from ..core import check_owner, pool
-
 from datetime import datetime
-
 from telethon import Button, events ,types 
-
 from telethon.events import CallbackQuery, InlineQuery
-
 from telethon.tl.functions.messages import ImportChatInviteRequest
-
 from telethon.tl.functions.messages import GetMessagesViewsRequest
-
 from telethon.tl.functions.channels import JoinChannelRequest
-
 from telethon.tl.functions.channels import LeaveChannelRequest
-
 from telethon.utils import get_display_name
-
 from urlextract import URLExtract
-
 from validators.url import url
-
 from matrix import StartTime
-
 from matrix import matrix
-
 from ..Config import Config
-
 from ..core.logger import logging
-
 from ..core.managers import edit_delete, edit_or_reply
-
 from ..helpers.functions import catalive, check_data_base_heal_th, get_readable_time
-
 from ..helpers.utils import reply_id, _catutils, parse_pre, yaml_format, install_pip, get_user_from_event, _format
-
 from ..helpers.tools import media_type
-
 from . import media_type, progress
-
 from ..utils import load_module, remove_plugin
-
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
-
 from ..sql_helper.global_collection import add_to_collectionlist, del_keyword_collectionlist, get_collectionlist_items
-
 from . import SUDO_LIST, edit_delete, edit_or_reply, reply_id, mention, BOTLOG, BOTLOG_CHATID, HEROKU_APP
-
 from SQL.extras import *
-
-from matrix import StartTime, matrix, catversion
-
+from matrix import StartTime, matrix
 from telethon.tl.functions.channels import JoinChannelRequest
-
 from telethon.tl.functions.messages import ImportChatInviteRequest
-
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-
 from telethon.tl.functions.contacts import UnblockRequest
-
 from . import mention
-
 from telethon import client, events
 
 
-UPDATE = gvarstatus("OR_UPDATE") or "(اعاده تشغيل|تحديث)"
-
-ORDERS = gvarstatus("OR_ORDERS") or "(الاوامر|ألاوامر|أوامري|م)"
-
+UPDATE = gvarstatus("OR_UPDATE") or "(اعادة تشغيل|تحديث)"
+ORDERS = gvarstatus("OR_ORDERS") or "(الاوامر|ألاوامر|م)"
 matrixPC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
-
 LOGS = logging.getLogger(os.path.basename(__name__))
-
 LOGS1 = logging.getLogger(__name__)
-
 ppath = os.path.join(os.getcwd(), "temp", "githubuser.jpg")
-
 GIT_TEMP_DIR = "./temp/"
-
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
-
 heroku_api = "https://api.heroku.com"
-
 HEROKU_APP_NAME = Config.HEROKU_APP_NAME
-
 HEROKU_API_KEY = Config.HEROKU_API_KEY
-
 cmdhd = Config.COMMAND_HAND_LER
-
 extractor = URLExtract()
-
 vlist = [    "ALIVE_PIC", "TGMABOT","subgroup","subprivate", "pchan",  "ALIVE_EMOJI",    "ALIVE_TMATRIXT",    "ALIVE_TEXT",    "ALLOW_NSFW",    "HELP_EMOJI",    "HELP_TEXT",    "IALIVE_PIC",    "PM_PIC",    "PM_TEXT",    "PM_BLOCK",    "MAX_FLOOD_IN_PMS",    "START_TEXT",    "NO_OF_ROWS_IN_HELP",    "NO_OF_COLUMNS_IN_HELP",    "CUSTOM_STICKER_PACKNAME",    "AUTO_PIC", "DEFAULT_BIO","FONTS_AUTO","OR_ALIVE","OR_UPDATE","OR_ORDERS","OR_MUTE","OR_TFLASH","OR_UNMUTE","OR_ADD","OR_ALLGROUB","OR_UNBAND","OR_BAND","OR_UNADMINRAISE","OR_ADMINRAISE","OR_LINK","OR_REMOVEBAN","OR_LEFT","OR_AUTOBIO","OR_NAMEAUTO","OR_ID","OR_UNPLAG","OR_PLAG","OR_FOTOAUTO","OR_MUQT","OR_FOTOSECRET","OR_ALLPRIVATE","MODSLEEP","OR_SLEEP","OR_UNMUQT"]
-
 DELETE_TIMEOUT = 5
-
 thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
-
 oldvars = {    "PM_PIC": "pmpermit_pic",    "PM_TEXT": "pmpermit_txt",    "PM_BLOCK": "pmblock",}
-
 matrixteamPIC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
-
 def convert_from_bytes(size):
-
     power = 2 ** 10
-
     n = 0
-
     units = {0: "", 1: "Kbps", 2: "Mbps", 3: "Gbps", 4: "Tbps"}
-
     while size > power:
-
         size /= power
-
         n += 1
-
     return f"{round(size, 2)} {units[n]}"
-
 
 @matrix.on(admin_cmd(pattern="المده(?: |$)(.*)"))    
 
@@ -3653,6 +3567,58 @@ async def _(event):
 
     await asyncio.sleep(2)
 
+random_media = ["https://telegra.ph/file/74066cb3ddb0bdba1c4b7.mp4"]
+
+matrix_uptime, start_time = None, None
+
+@matrix.ma_cmd(pattern="فحص(?:\s|$)([\s\S]*)")
+async def matrixar(event):
+    reply_to_id = await reply_id(event)
+    global start_time, matrix_uptime
+    
+    delete = await event.delete()
+    user = await event.client.get_entity(event.chat_id)
+    if start_time == None:
+        start_time = time.time()
+    
+    elapsed_time = time.time() - start_time
+    uptime = await get_readable_time((time.time() - StartTime))
+    tg_bot = Config.TG_BOT_USERNAME
+    elapsed_hours, elapsed_minutes, elapsed_seconds = int(elapsed_time // 3600), int((elapsed_time % 3600) // 60), int(elapsed_time % 60)
+    matrix_uptime = '{}:{:02d}:{:02d}'.format(elapsed_hours, elapsed_minutes, elapsed_seconds)
+    me = await event.client.get_me()
+    my_last = me.last_name
+    my_mention = f"[{me.last_name}](tg://user?id={me.id})"
+    start = datetime.now()
+    end = datetime.now()
+    MATRIXTM = time.strftime("%I:%M")
+    file_path = "installation_date.txt"
+if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
+    with open(file_path, "r") as file:
+        installation_time = file.read().strip()
+else:
+    installation_time = datetime.now().strftime("%Y-%m-%d")
+    with open(file_path, "w") as file:
+        file.write(installation_time)
+    ms = (end - start).microseconds / 1000
+    _, check_sgnirts = check_data_base_heal_th()
+    my_mention=my_mention,
+    MATRIXTM=MATRIXTM
+    MATRIXDATE=installation_time
+    pyver=python_version()
+    ping=ms
+        
+    final_message = f"""
+‌‎⿻┊NamE : {user.first_name}
+‌‎⿻┊TimE : {MATRIXTM}
+‌‎⿻┊DaTE : {tg_bot}
+‌‎⿻┊UpTimE : {uptime}
+‌‎⿻┊BoT : {tg_bot}
+‌‎⿻┊PyThon : {pyver}
+‌‎⿻┊‌‎PinG : {ping}
+⿻┊‌‎VarSioN : (1.2)
+‌‎⿻┊‌[MaTrix AraBic](https://t.me/matrixthon)"""
+    send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
 
 
 @matrix.on(admin_cmd(pattern="قتل(?: |$)(.*)"))
