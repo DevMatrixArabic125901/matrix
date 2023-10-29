@@ -47,10 +47,12 @@ async def matrixar(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
+    my_mention=my_mention,
+    mention=mention,
     ping=ms   
         
     final_message = f"""
-‌‎⿻┊NamE : {user.first_name}
+‌‎⿻┊NamE : {my_mention}
 ‌‎⿻┊PyThon : 3.8
 ‌‎⿻┊UpTimE : {uptime}
 ‌‎⿻┊BoT : {tg_bot} ٫
