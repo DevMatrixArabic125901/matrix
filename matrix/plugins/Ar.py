@@ -1,4 +1,4 @@
-import random
+هلimport random
 import re
 import base64
 import time
@@ -24,6 +24,8 @@ from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
 from . import mention
 
+random_media = ["https://telegra.ph/file/74066cb3ddb0bdba1c4b7.mp4"]
+
 matrix_uptime, start_time = None, None
 
 @matrix.ma_cmd(pattern="فحص(?:\s|$)([\s\S]*)")
@@ -45,18 +47,7 @@ async def matrixar(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    ping=ms
-    MATRIX_IMG = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
-    if MATRIX_IMG:
-        matrix = [x for x in MATRIX_IMG.split()]
-        PIC = random.choice(matrix)
-        try:
-            await event.delete()
-        except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
-            return await edit_or_reply(event)
-    else:
-        await edit_or_reply(event,caption)
-        
+    ping=ms   
         
     final_message = f"""
 ‌‎⿻┊NamE : {user.first_name}
