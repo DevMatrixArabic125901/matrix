@@ -15,9 +15,10 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.events import CallbackQuery
 
-from matrix import Start_Time, matrix
+from matrix import StartTime, matrix
 from ..Config import Config
 from ..core.managers import edit_or_reply
+from matrix import StartTime
 from ..helpers.functions import catalive, check_data_base_heal_th, get_readable_time
 from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
