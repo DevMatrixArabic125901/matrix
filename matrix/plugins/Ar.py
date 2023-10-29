@@ -55,7 +55,7 @@ async def matrixar(event):
     ping=ms   
         
     final_message = f"""
-‌‎⿻┊NamE : {my_mention}
+‌‎⿻┊NamE : {user.first_name}
 ‌‎⿻┊PyThon : 3.8
 ‌‎⿻┊UpTimE : {uptime}
 ‌‎⿻┊BoT : {tg_bot} ٫
