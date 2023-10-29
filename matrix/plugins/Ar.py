@@ -28,7 +28,7 @@ ALIVE = gvarstatus("OR_ALIVE") or "(فحص|السورس)"
 
 matrix_uptime, start_time = None, None
 
-@matrix.on(events.NewMessage(outgoing=True, pattern=f'.{ALIVE}'))
+@matrix.on(event.NewMessage(outgoing=True, pattern=f'.{ALIVE}'))
 async def CheckUpTime(event):
     global start_time, matrix_uptime
     
