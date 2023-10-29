@@ -53,7 +53,7 @@ async def matrixar(event):
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     my_mention=my_mention,
-    MATRIXTM=MATRIXTM,
+    MATRIXTM=MATRIXTM
     ping=ms
         
     final_message = f"""
