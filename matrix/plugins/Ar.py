@@ -49,16 +49,19 @@ async def matrixar(event):
     my_mention = f"[{me.last_name}](tg://user?id={me.id})"
     start = datetime.now()
     end = datetime.now()
+    MATRIXTM = time.strftime("%I:%M")
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     my_mention=my_mention,
-    ping=ms   
+    MATRIXTM=MATRIXTM,
+    ping=ms
         
     final_message = f"""
 ‌‎⿻┊NamE : {user.first_name}
-‌‎⿻┊PyThon : 3.8
+‌‎⿻┊TimE : {MATRIXTM}
 ‌‎⿻┊UpTimE : {uptime}
-‌‎⿻┊BoT : {tg_bot} ٫
+‌‎⿻┊BoT : {tg_bot}
+‌‎⿻┊PyThon : 3.8
 ‌‎⿻┊‌‎PinG : {ping}
-⿻┊‌‎Varsion : (1.2) ,"""
+⿻┊‌‎Varsion : (1.2)"""
     send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
