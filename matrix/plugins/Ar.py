@@ -51,7 +51,6 @@ async def matrixar(event):
         matrix = [x for x in MATRIX_IMG.split()]
         PIC = random.choice(matrix)
         try:
-            await matrix.client.send_file(matrix.chat_id, PIC, caption=caption, reply_to=reply_to_id)
             await matrixevent.delete()
         except (WebpageMediaEmptyError, MediaEmptyError, WebpageCurlFailedError):
             return await edit_or_reply(event)
