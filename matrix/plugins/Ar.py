@@ -43,6 +43,8 @@ async def matrixar(event):
     tg_bot = Config.TG_BOT_USERNAME
     elapsed_hours, elapsed_minutes, elapsed_seconds = int(elapsed_time // 3600), int((elapsed_time % 3600) // 60), int(elapsed_time % 60)
     matrix_uptime = '{}:{:02d}:{:02d}'.format(elapsed_hours, elapsed_minutes, elapsed_seconds)
+    my_last = me.last_name
+    my_mention = f"[{me.last_name}](tg://user?id={me.id})"
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds / 1000
