@@ -49,7 +49,6 @@ async def matrixar(event):
     MATRIXDATE = time.strftime("%Y/%m/%d")
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
-    my_mention=my_mention,
     MATRIXTM=MATRIXTM
     MATRIXDATE=MATRIXDATE
     pyver=python_version()
