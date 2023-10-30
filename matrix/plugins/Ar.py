@@ -53,7 +53,6 @@ async def matrixar(event):
     MATRIXDATE=MATRIXDATE
     pyver=python_version()
     ping=ms
-    data_matrix=date
         
     final_message = f"""
 ‌‎⿻┊‌[MaTrix AraBic](https://t.me/matrixthon)
