@@ -49,13 +49,13 @@ async def matrixar(event):
     ping=ms
         
     final_message = f"""
-‌‎⿻┊‌[MaTrix AraBic](https://t.me/matrixthon)
-‌‎⿻┊NamE : {my_mention}
-‌‎⿻┊DaTE : {MATRIXDATE}
-‌‎⿻┊TimE : {MATRIXTM}
-‌‎⿻┊UpTimE : {uptime}
-‌‎⿻┊BoT : {tg_bot}
-‌‎⿻┊PyThon : {pyver}
-‌‎⿻┊‌‎PinG : {ping}
-⿻┊‌‎VarSioN : (1.2)"""
+‌‎᥀┊‌[MaTrix AraBic](https://t.me/matrixthon)
+‌‎᥀┊NamE : {my_mention}
+᥀‌‎┊DaTE : {MATRIXDATE}
+‌‎᥀┊TimE : {MATRIXTM}
+‌‎᥀┊UpTimE : {uptime}
+‌‎᥀┊BoT : {tg_bot}
+‌‎᥀┊PyThon : {pyver}
+‌‎᥀┊‌‎PinG : {ping}
+᥀┊‌‎VarSioN : (1.2)"""
     send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
