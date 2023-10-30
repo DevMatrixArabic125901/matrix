@@ -35,6 +35,8 @@ async def matrixar(event):
     me = await event.client.get_me()
     start = datetime.now()
     end = datetime.now()
+    my_first_name = me.first_name
+    my_mention = f"[{me.first_name}](tg://user?id={me.id})"
     random_media = ["https://telegra.ph/file/74066cb3ddb0bdba1c4b7.mp4"]
     MATRIXTM = time.strftime("%I:%M")
     MATRIXDATE = time.strftime("%Y/%m/%d")
@@ -42,12 +44,13 @@ async def matrixar(event):
     _, check_sgnirts = check_data_base_heal_th()
     MATRIXTM=MATRIXTM
     MATRIXDATE=MATRIXDATE
+    my_mention=my_mention
     pyver=python_version()
     ping=ms
         
     final_message = f"""
 ‌‎⿻┊‌[MaTrix AraBic](https://t.me/matrixthon)
-‌‎⿻┊NamE : {user.first_name}
+‌‎⿻┊NamE : {my_mention}
 ‌‎⿻┊DaTE : {MATRIXDATE}
 ‌‎⿻┊TimE : {MATRIXTM}
 ‌‎⿻┊UpTimE : {uptime}
