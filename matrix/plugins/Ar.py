@@ -65,4 +65,4 @@ async def matrixar(event):
 ‌‎⿻┊PyThon : {pyver}
 ‌‎⿻┊‌‎PinG : {ping}
 ⿻┊‌‎VarSioN : (1.2)"""
-send_new_message = event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
+send_new_message = await event.client.send_message(entity=event.chat_id, message=final_message, file=random.choice(random_media))
