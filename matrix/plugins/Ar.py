@@ -38,7 +38,7 @@ async def matrixar(event):
     elapsed_time = time.time() - start_time
     uptime = await get_readable_time((time.time() - StartTime))
     tg_bot = Config.TG_BOT_USERNAME
-    matrix_uptime = '{}:{:02d}:{:02d}'.
+    matrix_uptime = '{}:{:02d}:{:02d}'.format(elapsed_hours, elapsed_minutes, elapsed_seconds)
     elapsed_hours, elapsed_minutes, elapsed_seconds = int(elapsed_time // 3600), int((elapsed_time % 3600) // 60), int(elapsed_time % 60)
     me = await event.client.get_me()
     my_last = me.last_name
