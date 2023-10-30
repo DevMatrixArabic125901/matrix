@@ -3,6 +3,7 @@ import re
 import base64
 import time
 import asyncio
+import requests
 import os
 from datetime import datetime
 from platform import python_version
