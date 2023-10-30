@@ -35,7 +35,7 @@ headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
 }
 
-    data = '{"telegramId":' + str(message.text) + '}'
+    data = '{"telegramId":' + str(idd) + '}'
     response = requests.post('https://restore-access.indream.app/regdate', headers=headers, data=data).json()
     date = response['data']['date']
 
