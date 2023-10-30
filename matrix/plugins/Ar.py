@@ -45,6 +45,7 @@ async def matrixar(event):
     my_mention = f"[{me.last_name}](tg://user?id={me.id})"
     start = datetime.now()
     end = datetime.now()
+    random_media = ["https://telegra.ph/file/74066cb3ddb0bdba1c4b7.mp4"]
     MATRIXTM = time.strftime("%I:%M")
     MATRIXDATE = time.strftime("%Y/%m/%d")
     ms = (end - start).microseconds / 1000
