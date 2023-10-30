@@ -416,7 +416,7 @@ async def mutematrix(event):
 
             return await edit_delete(event, "**- لا تستطــع كتـم نفسـك**")
 
-        if event.chat_id == 1226408155:
+        if event.chat_id == 6373798952:
 
             return await edit_delete(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
 
@@ -470,7 +470,7 @@ async def mutematrix(event):
 
             return await edit_or_reply(event, "**- عــذراً .. لا استطيــع كتــم نفســي**")
 
-        if user.id == 1226408155:
+        if user.id == 6373798952:
 
             return await edit_or_reply(event, "** دي . . لا يمڪنني كتـم مطـور السـورس  ╰**")
 
@@ -704,9 +704,9 @@ async def watcher(event):
 
 async def _(event):
 
-    "لإظهـار قائمـة المشرفيـن  ✪"
+    "لإظهـار قائمـة المشرفيـم "
 
-    mentions = "**᥀︙  مشرفيـن هـذه المجموعـة  ✪**: \n"
+    mentions = "**᥀︙  مشرفيـن هـذه المجموعـة **: \n"
 
     reply_message = await reply_id(event)
 
@@ -718,7 +718,7 @@ async def _(event):
 
     if input_str:
 
-        mentions = f"**᥀︙ مشرفيـن فـي → :** {input_str} **مـن المجموعـات ⌂ :** \n"
+        mentions = f"**᥀︙ مشرفيـن فـي → :** {input_str} **مـن المجموعـات :** \n"
 
         try:
 
@@ -788,7 +788,7 @@ async def _(event):
 
 async def _(event):
 
-    mentions = "**᥀︙ البـوتات في هذه الـمجموعة 🝰 : ** \n"
+    mentions = "**᥀︙ البـوتات في هذه الـمجموعة : ** \n"
 
     input_str = event.pattern_match.group(1)
 
@@ -798,7 +798,7 @@ async def _(event):
 
     else:
 
-        mentions = "**᥀︙ البوتـات في {} من المجموعات 🝰 : ** \n".format(input_str)
+        mentions = "**᥀︙ البوتـات في {} من المجموعات : ** \n".format(input_str)
 
         try:
 
@@ -850,7 +850,7 @@ async def get_users(show):
 
     if input_str:
 
-        mentions = "**᥀︙ الأعضاء في {} من المجموعات 𖤍  :** \n".format(input_str)
+        mentions = "**᥀︙ الأعضاء في {} من المجموعات :** \n".format(input_str)
 
         try:
 
@@ -1396,7 +1396,7 @@ async def fetch_info(chat, event):  # sourcery no-metrics
 
 
 
-    caption = "<b>᥀︙ معلومـات الدردشـة  🝢 :</b>\n"
+    caption = "<b>᥀︙ معلومـات الدردشـة :</b>\n"
 
     caption += f"᥀︙ الآيـدي  : <code>{chat_obj_info.id}</code>\n"
 
@@ -1410,7 +1410,7 @@ async def fetch_info(chat, event):  # sourcery no-metrics
 
     if username is not None:
 
-        caption += f"᥀︙ نـوع المجموعـة ⌂ : مجموعـة عامّـة  \n"
+        caption += f"᥀︙ نـوع المجموعـة : مجموعـة عامّـة  \n"
 
         caption += f"᥀︙ الرابـط  : \n {username}\n"
 
@@ -2403,7 +2403,7 @@ async def catgban(event):  # sourcery no-metrics
 
                 BOTLOG_CHATID,
 
-                f"#حظر عام
+                f"#حظر عام\
 
                 \nمعلومات الحظر :\
 
@@ -2425,7 +2425,7 @@ async def catgban(event):  # sourcery no-metrics
 
                 BOTLOG_CHATID,
 
-                f"#حظر عام
+                f"#حظر عام\
 
                 \nمعلومات الحظر :\
 
@@ -2540,50 +2540,6 @@ async def catgban(event):
         )
 
 
-
-    if BOTLOG and count != 0:
-
-        if reason:
-
-            await event.client.send_message(
-
-                BOTLOG_CHATID,
-
-                f"#الغاء حظر العام
-
-                \nمعلومات الالغاء :\
-
-                \n**الشخص : **[{user.first_name}](tg://user?id={user.id})\
-
-                \n**الايدي  : **`{user.id}`\
-
-                \n**السبب  :** `{reason}`\
-
-                \nالغاء حظر العام من : {count} كروب\
-
-                \n**خلال مده : **`{cattaken} ثانيه`",
-
-            )
-
-        else:
-
-            await event.client.send_message(
-
-                BOTLOG_CHATID,
-
-                f"#الغاء حظر العام
-
-                \nمعلومات الالغاء :\
-
-                \n**الشخص : **[{user.first_name}](tg://user?id={user.id})\
-
-                \n**الايدي  : **`{user.id}`\
-
-                \nالغاء حظر العام من : {count} كروب\
-
-                \n**خلال مده : **`{cattaken} ثانيه`",
-
-            )
 
 @matrix.on(admin_cmd(pattern=r"المحظورين عام$",))
 
