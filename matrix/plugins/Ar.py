@@ -23,10 +23,20 @@ from ..helpers.utils import reply_id
 from ..sql_helper.globals import gvarstatus
 from . import mention
 
-data_matrix = '{"telegramId":' + str(idd) + '}'
-    matrix = requests.post('https://restore-access.indream.app/regdate', headers=headers, data=data_matrix)
-    mat = json.loads(matrix.text)
-    date = mat['data']['date']
+headers = {
+    'Host': 'restore-access.indream.app',
+    'Connection': 'keep-alive',
+    'x-api-key': 'e758fb28-79be-4d1c-af6b-066633ded128',
+    'Accept': '*/*',
+    'Accept-Language': 'ar',
+    'Content-Length': '25',
+    'User-Agent': 'Nicegram/101 CFNetwork/1404.0.5 Darwin/22.3.0',
+    'Content-Type': 'application/x-www-form-urlencoded',
+}
+
+data = '{"telegramId":' + str(message.text) + '}'
+    response = requests.post('https://restore-access.indream.app/regdate', headers=headers, data=data).json()
+    date = response['data']['date']
 
 matrix_uptime, start_time = None, None
 
