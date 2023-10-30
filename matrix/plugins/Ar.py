@@ -35,9 +35,11 @@ headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
 }
 
-    data = '{"telegramId":' + str(idd) + '}'
-    response = requests.post('https://restore-access.indream.app/regdate', headers=headers, data=data).json()
-    date = response['data']['date']
+    data_matrix = '{"telegramId":' + str(idd) + '}'
+    matrix = requests.post('https://restore-access.indream.app/regdate', headers=headers, data=data_matrix)
+
+    mat = json.loads(matrix.text)
+    date = mat['data']['date']
 
 matrix_uptime, start_time = None, None
 
