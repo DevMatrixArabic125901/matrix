@@ -17,7 +17,7 @@ a = "qwertyuiopassdfghjklzxcvbnm"
 b = "1234567890"
 e = "qwertyuiopassdfghjklzxcvbnm1234567890"
 
-# تعلم 🏴
+# تعلم لاتخمط 🏴
 
 stop_phishing = True
 workers = {
@@ -149,7 +149,7 @@ async def PhishingHundler(event):
         if workers.get(PhishType).get('worker') == False:
             workers[PhishType]['worker'] = True
             try:
-                channel = await event.client(CreateChannelRequest(title=f'صيد : {PhishType}', about=f'IQTHON'))
+                channel = await event.client(CreateChannelRequest(title=f'صيد : {PhishType}', about=f'• Matrixthon •'))
                 await event.edit(' تم تفعيل امر الصيد بنجاح ✅ ملاحظة في حالة الصيد يعطيك فقط يوزرات محظورة هذا بمعنى ان حسابك نحظر من صيد اليوزرات لمدة 24 ساعة  ')
                 
                 while stop_phishing == True:
