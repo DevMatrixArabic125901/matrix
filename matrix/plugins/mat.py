@@ -117,7 +117,7 @@ async def _(event):
             list = await matrix(GetHistoryRequest(peer=channel_entity, limit=1,
                                                    offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
             msgs = list.messages[0]
-            if msgs.message.find('لايوجد قنوات خلصت') != -1:
+            if msgs.message.find('لايوجد قنوات') != -1:
                 await matrix.send_message(event.chat_id, f"**لاتوجد قنوات للبوت**")
                 break
             url = msgs.reply_markup.rows[0].buttons[0].url
