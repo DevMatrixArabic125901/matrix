@@ -19,6 +19,7 @@ class Config(object):
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
     OWNER_ID = int(os.environ.get("OWNER_ID") or 0)
+    matrix = os.environ.get("matrix")
     PM_LOGGER_GROUP_ID = int( os.environ.get("PM_LOGGER_GROUP_ID") or os.environ.get("PM_LOGGR_BOT_API_ID") or 0 )
     PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL") or 0)
     TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "matrix")
