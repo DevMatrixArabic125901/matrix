@@ -14445,3 +14445,98 @@ async def ma(mention):
 
 
     await edit_or_reply(mention, f"**᥀ ¦ المستخدم ⪼ • ** [{mat2}](tg://user?id={user.id}) \n ☑️ **¦  تـم رفـعه غـبي 🛏️ .** \n**🍚 ¦ بواسطه  : ** {my_mention} ")
+
+
+@matrix.on(admin_cmd(pattern="اهمس ?(.*)"))
+async def wspr(event):
+    if event.fwd_from:
+        return
+    input_str = event.pattern_match.group(1)
+    wspr_bot = "@BYYiBoT"
+    if event.reply_to_msg_id:
+        reply_to_id = await event.get_reply_message()
+    ton = await bot.inline_query(wspr_bot, input_str) 
+    await ton[0].click(event.chat_id)
+    await event.delete()
+
+
+@matrix.mat_cmd(
+    pattern="(سكرين|ss) ([\s\S]*)",
+    command=("سكرين", plugin_category),
+    info={
+        "header": "لـ اخذ لقطـة شاشـه لـ المواقـع",
+        "الاستخـدام": "{tr}سكرين + رابـط",
+        "مثــال": "{tr}سكرين https://github.com",
+    },
+)
+async def _(event):
+    "لـ اخذ لقطـة شاشـه لـ المواقـع"
+    if Config.CHROME_BIN is None:
+        return await edit_or_reply(
+            event, "Need to install Google Chrome. Module Stopping."
+        )
+    matevent = await edit_or_reply(event, "**- جـارِ اخـذ لقطـة شاشـه للصفحـه...**")
+    start = datetime.now()
+    try:
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("--ignore-certificate-errors")
+        chrome_options.add_argument("--test-type")
+        chrome_options.add_argument("--headless")
+        # https://stackoverflow.com/a/53073789/4723940
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.binary_location = Config.CHROME_BIN
+        await event.edit("**- جـارِ الاتصـال بجـوجل كـروم ...**")
+        driver = webdriver.Chrome(chrome_options=chrome_options)
+        cmd = event.pattern_match.group(1)
+        input_str = event.pattern_match.group(2)
+        inputstr = input_str
+        rmsg = await event.get_reply_message()
+        if not inputstr and rmsg:
+            inputstr = rmsg.text
+        if not inputstr and not rmsg:
+            return await zzevent.edit("**- قـم بادخــال رابـط مع الامـر او بالــرد ع رابـط ...**")
+        if cmd == "سكرين":
+            caturl = url(inputstr)
+            if not inputstr:
+                return await zzevent.edit("**- قـم بادخــال رابـط مع الامـر او بالــرد ع رابـط ...**")
+            if not caturl:
+                inputstr = f"http://{input_str}"
+                caturl = url(inputstr)
+            if not caturl:
+                return await zzevent.edit("**- عـذراً .. الرابـط المدخـل ليس رابـط مدعـوم ؟!**")
+        if cmd == "ss":
+            inputstr = f"https://www.google.com/search?q={input_str}"
+        driver.get(inputstr)
+        await zzevent.edit("**- جـارِ رفـع لقطـة شاشـه للصفحـه...**")
+        height = driver.execute_script(
+            "return Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);"
+        )
+        width = driver.execute_script(
+            "return Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);"
+        )
+        driver.set_window_size(width + 100, height + 100)
+        # Add some pixels on top of the calculated dimensions
+        # for good measure to make the scroll bars disappear
+        im_png = driver.get_screenshot_as_png()
+        # saves screenshot of entire page
+        await zzevent.edit("**- تم إغـلاق جوجـل كـروم ✓**")
+        driver.close()
+        message_id = await reply_id(event)
+        end = datetime.now()
+        ms = (end - start).seconds
+        hmm = f"**- المـوقع : **{input_str} \n**- الوقت المستغـرق : {ms} ثانيـه**\n**- تم اخـذ لقطـة شاشـه بنجـاح ✓**"
+        await zzevent.delete()
+        with io.BytesIO(im_png) as out_file:
+            out_file.name = f"{input_str}.PNG"
+            await event.client.send_file(
+                event.chat_id,
+                out_file,
+                caption=hmm,
+                force_document=True,
+                reply_to=message_id,
+                allow_cache=False,
+                silent=True,
+            )
+    except Exception:
+        await matevent.edit(f"`{traceback.format_exc()}`")
