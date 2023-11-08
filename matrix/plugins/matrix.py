@@ -59,13 +59,6 @@ from telethon.tl.functions.contacts import UnblockRequest
 from . import mention
 from telethon import client, events
 
-def get_size(inputbytes, suffix="B"):
-    factor = 1024
-    for unit in ["", "K", "M", "G", "T", "P"]:
-        if inputbytes < factor:
-            return f"{inputbytes:.2f}{unit}{suffix}"
-        inputbytes /= factor
-
 UPDATE = gvarstatus("OR_UPDATE") or "(اعادة تشغيل|تحديث)"
 
 ORDERS = gvarstatus("OR_ORDERS") or "(الاوامر|ألاوامر|م)"
@@ -14467,6 +14460,13 @@ async def wspr(event):
     await event.delete()
 
 
+def get_size(inputbytes, suffix="B"):
+    factor = 1024
+    for unit in ["", "K", "M", "G", "T", "P"]:
+        if inputbytes < factor:
+            return f"{inputbytes:.2f}{unit}{suffix}"
+        inputbytes /= factor
+
 @matrix.on(admin_cmd(pattern="النظام (?:\s|$)([\s\S]*)"))
 async def psu(event):
     uname = platform.uname()
@@ -14475,20 +14475,16 @@ async def psu(event):
     softw += f"**‌‎᥀┊المرجع  : ** `{uname.release}`\n"
     softw += f"**‌‎᥀┊الاصدار  : ** `{uname.version}`\n"
     softw += f"**‌‎᥀┊النـوع  : ** `{uname.machine}`\n"
-    # Boot Time
     boot_time_timestamp = psutil.boot_time()
     bt = datetime.fromtimestamp(boot_time_timestamp)
     softw += f"**‌‎᥀┊تاريـخ التنصيب : **\n**- التاريـخ :**\t`{bt.day}/{bt.month}/{bt.year}`\n**- الـوقت :**\t`{bt.hour}:{bt.minute}`\n"
-    # CPU Cores
     cpuu = "**- معلومات المعالـج :**\n"
     cpuu += "**‌‎᥀┊الماديـه   :** `" + str(psutil.cpu_count(logical=False)) + "`\n"
     cpuu += "**‌‎᥀┊الكليـه      :** `" + str(psutil.cpu_count(logical=True)) + "`\n"
-    # CPU frequencies
     cpufreq = psutil.cpu_freq()
     cpuu += f"**‌‎᥀┊اعلـى تـردد    : ** `{cpufreq.max:.2f}Mhz`\n"
     cpuu += f"**‌‎᥀┊اقـل تـردد    : ** `{cpufreq.min:.2f}Mhz`\n"
     cpuu += f"**‌‎᥀┊التـردد الإفتـراضـي : ** `{cpufreq.current:.2f}Mhz`\n\n"
-    # CPU usage
     cpuu += "**- استخدامات المعالج لكل وحده :**\n"
     for i, percentage in enumerate(psutil.cpu_percent(percpu=True)):
         cpuu += f"**‌‎᥀┊كـور {i}  : ** `{percentage}%`\n"
