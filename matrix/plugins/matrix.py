@@ -59,6 +59,13 @@ from telethon.tl.functions.contacts import UnblockRequest
 from . import mention
 from telethon import client, events
 
+def get_size(inputbytes, suffix="B"):
+    factor = 1024
+    for unit in ["", "K", "M", "G", "T", "P"]:
+        if inputbytes < factor:
+            return f"{inputbytes:.2f}{unit}{suffix}"
+        inputbytes /= factor
+
 UPDATE = gvarstatus("OR_UPDATE") or "(اعادة تشغيل|تحديث)"
 
 ORDERS = gvarstatus("OR_ORDERS") or "(الاوامر|ألاوامر|م)"
@@ -14447,7 +14454,7 @@ async def ma(mention):
     await edit_or_reply(mention, f"**᥀ ¦ المستخدم ⪼ • ** [{mat2}](tg://user?id={user.id}) \n ☑️ **¦  تـم رفـعه غـبي 🛏️ .** \n**🍚 ¦ بواسطه  : ** {my_mention} ")
 
 
-@matrix.on(admin_cmd(pattern="اهمس ?(.*)"))
+@matrix.on(admin_cmd(pattern="اهمس (?:\s|$)([\s\S]*)"))
 async def wspr(event):
     if event.fwd_from:
         return
@@ -14460,83 +14467,49 @@ async def wspr(event):
     await event.delete()
 
 
-@matrix.mat_cmd(
-    pattern="(سكرين|ss) ([\s\S]*)",
-    command=("سكرين", plugin_category),
-    info={
-        "header": "لـ اخذ لقطـة شاشـه لـ المواقـع",
-        "الاستخـدام": "{tr}سكرين + رابـط",
-        "مثــال": "{tr}سكرين https://github.com",
-    },
-)
-async def _(event):
-    "لـ اخذ لقطـة شاشـه لـ المواقـع"
-    if Config.CHROME_BIN is None:
-        return await edit_or_reply(
-            event, "Need to install Google Chrome. Module Stopping."
-        )
-    matevent = await edit_or_reply(event, "**- جـارِ اخـذ لقطـة شاشـه للصفحـه...**")
-    start = datetime.now()
-    try:
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--ignore-certificate-errors")
-        chrome_options.add_argument("--test-type")
-        chrome_options.add_argument("--headless")
-        # https://stackoverflow.com/a/53073789/4723940
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.binary_location = Config.CHROME_BIN
-        await event.edit("**- جـارِ الاتصـال بجـوجل كـروم ...**")
-        driver = webdriver.Chrome(chrome_options=chrome_options)
-        cmd = event.pattern_match.group(1)
-        input_str = event.pattern_match.group(2)
-        inputstr = input_str
-        rmsg = await event.get_reply_message()
-        if not inputstr and rmsg:
-            inputstr = rmsg.text
-        if not inputstr and not rmsg:
-            return await zzevent.edit("**- قـم بادخــال رابـط مع الامـر او بالــرد ع رابـط ...**")
-        if cmd == "سكرين":
-            caturl = url(inputstr)
-            if not inputstr:
-                return await zzevent.edit("**- قـم بادخــال رابـط مع الامـر او بالــرد ع رابـط ...**")
-            if not caturl:
-                inputstr = f"http://{input_str}"
-                caturl = url(inputstr)
-            if not caturl:
-                return await zzevent.edit("**- عـذراً .. الرابـط المدخـل ليس رابـط مدعـوم ؟!**")
-        if cmd == "ss":
-            inputstr = f"https://www.google.com/search?q={input_str}"
-        driver.get(inputstr)
-        await zzevent.edit("**- جـارِ رفـع لقطـة شاشـه للصفحـه...**")
-        height = driver.execute_script(
-            "return Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);"
-        )
-        width = driver.execute_script(
-            "return Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);"
-        )
-        driver.set_window_size(width + 100, height + 100)
-        # Add some pixels on top of the calculated dimensions
-        # for good measure to make the scroll bars disappear
-        im_png = driver.get_screenshot_as_png()
-        # saves screenshot of entire page
-        await zzevent.edit("**- تم إغـلاق جوجـل كـروم ✓**")
-        driver.close()
-        message_id = await reply_id(event)
-        end = datetime.now()
-        ms = (end - start).seconds
-        hmm = f"**- المـوقع : **{input_str} \n**- الوقت المستغـرق : {ms} ثانيـه**\n**- تم اخـذ لقطـة شاشـه بنجـاح ✓**"
-        await zzevent.delete()
-        with io.BytesIO(im_png) as out_file:
-            out_file.name = f"{input_str}.PNG"
-            await event.client.send_file(
-                event.chat_id,
-                out_file,
-                caption=hmm,
-                force_document=True,
-                reply_to=message_id,
-                allow_cache=False,
-                silent=True,
-            )
-    except Exception:
-        await matevent.edit(f"`{traceback.format_exc()}`")
+@matrix.on(admin_cmd(pattern="النظام (?:\s|$)([\s\S]*)"))
+async def psu(event):
+    uname = platform.uname()
+    softw = "**᥀┊نظام السورس الحالي**\n"
+    softw += f"**‌‎᥀┊النظام : ** `{uname.system}`\n"
+    softw += f"**‌‎᥀┊المرجع  : ** `{uname.release}`\n"
+    softw += f"**‌‎᥀┊الاصدار  : ** `{uname.version}`\n"
+    softw += f"**‌‎᥀┊النـوع  : ** `{uname.machine}`\n"
+    # Boot Time
+    boot_time_timestamp = psutil.boot_time()
+    bt = datetime.fromtimestamp(boot_time_timestamp)
+    softw += f"**‌‎᥀┊تاريـخ التنصيب : **\n**- التاريـخ :**\t`{bt.day}/{bt.month}/{bt.year}`\n**- الـوقت :**\t`{bt.hour}:{bt.minute}`\n"
+    # CPU Cores
+    cpuu = "**- معلومات المعالـج :**\n"
+    cpuu += "**‌‎᥀┊الماديـه   :** `" + str(psutil.cpu_count(logical=False)) + "`\n"
+    cpuu += "**‌‎᥀┊الكليـه      :** `" + str(psutil.cpu_count(logical=True)) + "`\n"
+    # CPU frequencies
+    cpufreq = psutil.cpu_freq()
+    cpuu += f"**‌‎᥀┊اعلـى تـردد    : ** `{cpufreq.max:.2f}Mhz`\n"
+    cpuu += f"**‌‎᥀┊اقـل تـردد    : ** `{cpufreq.min:.2f}Mhz`\n"
+    cpuu += f"**‌‎᥀┊التـردد الإفتـراضـي : ** `{cpufreq.current:.2f}Mhz`\n\n"
+    # CPU usage
+    cpuu += "**- استخدامات المعالج لكل وحده :**\n"
+    for i, percentage in enumerate(psutil.cpu_percent(percpu=True)):
+        cpuu += f"**‌‎᥀┊كـور {i}  : ** `{percentage}%`\n"
+    cpuu += "**- استخدامات المعالج الكليـه :**\n"
+    cpuu += f"**‌‎᥀┊الكـليه : ** `{psutil.cpu_percent()}%`\n"
+    # RAM Usage
+    svmem = psutil.virtual_memory()
+    memm = "**- استخدامـات الذاكـره :**\n"
+    memm += f"**‌‎᥀┊الكـليه     : ** `{get_size(svmem.total)}`\n"
+    memm += f"**‌‎᥀┊الفعليـه : ** `{get_size(svmem.available)}`\n"
+    memm += f"**‌‎᥀┊المستخدمـه      : ** `{get_size(svmem.used)}`\n"
+    memm += f"**‌‎᥀┊المتاحـه: ** `{svmem.percent}%`\n"
+    # Bandwidth Usage
+    bw = "**- استخدامات الرفـع والتحميـل :**\n"
+    bw += f"**‌‎᥀┊الرفـع  : ** `{get_size(psutil.net_io_counters().bytes_sent)}`\n"
+    bw += f"**‌‎᥀┊التحميـل : ** `{get_size(psutil.net_io_counters().bytes_recv)}`\n"
+    help_string = f"{str(softw)}\n"
+    help_string += f"{str(cpuu)}\n"
+    help_string += f"{str(memm)}\n"
+    help_string += f"{str(bw)}\n"
+    help_string += "**- إصـدار بايثــون & تيليثــون :**\n"
+    help_string += f"**‌‎᥀┊بايثـون : ** `{sys.version}`\n"
+    help_string += f"**‌‎᥀┊تيليثـون : ** `{__version__}`"
+    await event.edit(help_string)
