@@ -4400,7 +4400,6 @@ async def matrixteam(event):
 @matrix.on(admin_cmd(pattern="م22(?: |$)(.*)"))    
 
 
-
 async def matrixteam(event):
 
 
@@ -4931,7 +4930,26 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-
+@matrix.on(events.NewMessage(outgoing=True, pattern=r"\.كلمات وعد (.*)"))
+async def _(event):
+    if ispay[0] == "yes":
+        for i in range(int("".join(event.text.split(maxsplit=2)[2:]).split(" ", 2)[0])):
+            if ispay[0] == 'no':
+                break
+            chat = event.chat_id
+            await matrix.send_message(chat, 'كلمات')
+            await asyncio.sleep(0.5)
+            masg = await matrix.get_messages(chat, limit=1)
+            masg = masg[0].message
+            masg = ("".join(masg.split(maxsplit=3)[3:])).split(" ", 2)
+            if len(masg) == 2:
+                msg = masg[0]
+                await matrix.send_message(chat, msg)
+            else:
+                msg = masg[0] + " " + masg[1]
+                await matrix.send_message(chat, msg)
+    else:
+        await event.edit("يجب الدفع لاستعمال هذا الامر !")
 
 
 
