@@ -25,7 +25,7 @@ from ..helpers.utils import _cattools
 from ..sql_helper.globals import gvarstatus
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
 EMOJI_SEN = [    "يمكنك إدراج عدة رموز تعبيرية في رسالة واحدة ، ولكني أوصي باستخدام ما لا يزيد عن اثنين لكل ملصق" ,]
-KANGING_STR = [    "جيد ملصق جميل " ]
+MATRIX_STR = [    "جيد ملصق جميل " ]
 def verify_cond(catarray, text):
     return any(i in text for i in catarray)
 def pack_name(userid, pack, is_anim):
@@ -159,18 +159,18 @@ async def kang(args):
     userid = user.id
     if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
-            catevent = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+            catevent = await edit_or_reply(args, f"`{random.choice(MATRIX_STR)}`")
             photo = io.BytesIO()
             photo = await args.client.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split("/"):
-            catevent = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+            catevent = await edit_or_reply(args, f"`{random.choice(MATRIX_STR)}`")
             photo = io.BytesIO()
             await args.client.download_file(message.media.document, photo)
             if (                DocumentAttributeFilename(file_name="sticker.webp")                in message.media.document.attributes            ):
                 emoji = message.media.document.attributes[1].alt
                 emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
-            catevent = await edit_or_reply(args, f"`{random.choice(KANGING_STR)}`")
+            catevent = await edit_or_reply(args, f"`{random.choice(MATRIX_STR)}`")
             await args.client.download_file(                message.media.document, "AnimatedSticker.tgs"            )
 
             attributes = message.media.document.attributes
@@ -188,7 +188,7 @@ async def kang(args):
         return
     if photo:
         splat = ("".join(args.text.split(maxsplit=1)[1:])).split()
-        emoji = emoji if emojibypass else "😂"
+        emoji = emoji if emojibypass else "❤️"
         pack = 1
         if len(splat) == 2:
             if char_is_emoji(splat[0][0]):
@@ -285,7 +285,7 @@ async def pack_kang(event):
             return
         if photo:
             splat = ("".join(event.text.split(maxsplit=1)[1:])).split()
-            emoji = emoji or "♥️"
+            emoji = emoji or "❤️"
             if pack is None:
                 pack = 1
                 if len(splat) == 1:
@@ -324,7 +324,7 @@ async def pack_kang(event):
     for i in enumerate(blablapacks):
         result += (            f"  •  [pack {blablapacknames[i[0]]}](t.me/addstickers/{blablapacks[i[0]]})"        )
     await catevent.edit(result)
-@matrix.on(admin_cmd(pattern="صنع حزمه ملصقات(?:\s|$)([\s\S]*)"))   
+@matrix.on(admin_cmd(pattern="انشاء حزمه ملصقات(?:\s|$)([\s\S]*)"))   
 async def pic2packcmd(event):
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
