@@ -324,7 +324,7 @@ async def pack_kang(event):
     for i in enumerate(blablapacks):
         result += (            f"  •  [pack {blablapacknames[i[0]]}](t.me/addstickers/{blablapacks[i[0]]})"        )
     await catevent.edit(result)
-@matrix.on(admin_cmd(pattern="انشاء حزمه ملصقات(?:\s|$)([\s\S]*)"))   
+@matrix.on(admin_cmd(pattern="صنع حزمه ملصقات(?:\s|$)([\s\S]*)"))   
 async def pic2packcmd(event):
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
