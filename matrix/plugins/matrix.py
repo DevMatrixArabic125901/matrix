@@ -63,7 +63,6 @@ UPDATE = gvarstatus("OR_UPDATE") or "(اعادة تشغيل|تحديث)"
 
 ORDERS = gvarstatus("OR_ORDERS") or "(الاوامر|ألاوامر|م)"
 
-matrixPC = gvarstatus("ALIVE_PIC") or "https://telegra.ph/file/b180dcd0020f55cb63f8a.mp4"
 
 LOGS = logging.getLogger(os.path.basename(__name__))
 
