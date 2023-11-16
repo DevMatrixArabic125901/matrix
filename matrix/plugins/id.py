@@ -616,7 +616,7 @@ async def fetch_info(replied_user, event):
 
 
 
-        "مطـور السـورس"
+        "مطـور السـورس ༨"
 
 
 
@@ -624,8 +624,7 @@ async def fetch_info(replied_user, event):
 
 
 
-        if user_id == 6373798952
-        else user_id == 6516751434
+        if user_id == 6373798952 or user_id == 6516751434
 
 
 
@@ -633,7 +632,7 @@ async def fetch_info(replied_user, event):
 
 
 
-        else ("العضـو")
+        else ("العضـو ≁")
 
 
 
@@ -657,7 +656,7 @@ async def fetch_info(replied_user, event):
 
 
 
-        "مـالك الـحساب"
+        "مـالك الـحساب ≁"
 
 
 
