@@ -757,7 +757,7 @@ async def fetch_info(replied_user, event):
 
 
 
-@matrix.mat_cmd(pattern="ايدي(?: |$)(.*)")
+@matrix.ma_cmd(pattern="ايدي(?: |$)(.*)")
 
 
 
@@ -1005,7 +1005,7 @@ async def who(event):
 
 
 
-@matrix.mat_cmd(pattern="ا(?: |$)(.*)")
+@matrix.ma_cmd(pattern="ا(?: |$)(.*)")
 
 
 
@@ -1255,7 +1255,7 @@ async def who(event):
 
 
 
-@matrix.mat_cmd(pattern="رابط الحساب(?:\s|$)([\s\S]*)")
+@matrix.ma_cmd(pattern="رابط الحساب(?:\s|$)([\s\S]*)")
 
 
 
