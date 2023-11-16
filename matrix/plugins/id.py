@@ -757,7 +757,7 @@ async def fetch_info(replied_user, event):
 
 
 
-@dragoiq.ar_cmd(pattern="ايدي(?: |$)(.*)")
+@matrix.mat_cmd(pattern="ايدي(?: |$)(.*)")
 
 
 
@@ -1005,7 +1005,7 @@ async def who(event):
 
 
 
-@dragoiq.ar_cmd(pattern="ا(?: |$)(.*)")
+@matrix.mat_cmd(pattern="ا(?: |$)(.*)")
 
 
 
@@ -1255,7 +1255,7 @@ async def who(event):
 
 
 
-@dragoiq.ar_cmd(pattern="رابط الحساب(?:\s|$)([\s\S]*)")
+@matrix.mat_cmd(pattern="رابط الحساب(?:\s|$)([\s\S]*)")
 
 
 
