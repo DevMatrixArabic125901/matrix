@@ -24,7 +24,7 @@ from telethon.tl.types import MessageEntityMentionName
 
 
 
-from matrix import dragoiq
+from matrix import matrix
 
 
 
