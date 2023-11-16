@@ -1,70 +1,26 @@
+import html
 import os
-
-
-
-
-
-from telethon.tl.functions.photos import GetUserPhotosRequest
-
-
-
-from telethon.tl.functions.users import GetFullUserRequest
-
-
-
+import base64
+from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.tl.types import MessageEntityMentionName
-
-
-
-
-
-
-
-
-
-
-
+from requests import get
+from telethon.tl.functions.photos import GetUserPhotosRequest
+from telethon.tl.functions.users import GetFullUserRequest
 from matrix import matrix
-
-
-
-from matrix.Config import Config
-
-
-
-from drago.core.logger import logging
-
-
-
-from matrix.core.managers import edit_or_reply
-
-
-
+from matrix.core.logger import logging
+from ..Config import Config
+from ..core.managers import edit_or_reply, edit_delete
+from ..helpers import reply_id
 from ..sql_helper.globals import gvarstatus
-
-
-
-
-
+from . import spamwatch
+plugin_category = "@Matrixthon"
 LOGS = logging.getLogger(__name__)
 
 
-
-
-
-
-
 MATTEXT = gvarstatus("CUSTOM_ALIVE_TEXT") or "مـعلومـات حـسابـك مـن سـورس ماتـركس العـربي"
-
 MATRIX = gvarstatus("CUSTOM_ALIVE_EMOJI") or ": ›"
-
 MATTRIX = gvarstatus("CUSTOM_ALIVE_EMOJI") or "‹ :"
-
-
-
 VMATRIXV = gvarstatus("CUSTOM_ALIVE_FONT") or "⊱━━━━━━━⊰᥀⊱━━━━━━━━⊰"
-
-
 
 async def get_user_from_event(event):
 
