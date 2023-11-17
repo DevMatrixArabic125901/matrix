@@ -28,21 +28,16 @@ matrix_uptime, start_time = None, None
 @matrix.ma_cmd(pattern="فحص(?:\s|$)([\s\S]*)")
 async def matrixar(event):
     reply_to_id = await reply_id(event)
-    global start_time, matrix_uptime
     
     delete = await event.delete()
     user = await event.client.get_entity(event.chat_id)
-    if start_time == None:
-        start_time = time.time()
     
     elapsed_time = time.time() - start_time
     uptime = await get_readable_time((time.time() - StartTime))
     tg_bot = Config.TG_BOT_USERNAME
-    matrix_uptime = '{}:{:02d}:{:02d}'.
-    elapsed_hours, elapsed_minutes, elapsed_seconds = int(elapsed_time // 3600), int((elapsed_time % 3600) // 60), int(elapsed_time % 60)
     me = await event.client.get_me()
-    my_last = me.last_name
-    my_mention = f"[{me.last_name}](tg://user?id={me.id})"
+    my_first = me.first_name
+    my_mention = f"[{me.first_name}](tg://user?id={me.id})"
     start = datetime.now()
     end = datetime.now()
     random_media = ["https://telegra.ph/file/54a2add6356e510159a7f.mp4"]
@@ -58,7 +53,7 @@ async def matrixar(event):
     data_matrix=date
         
     final_message = f"""
-‌‎⿻┊NamE : {user.first_name}
+‌‎⿻┊NamE : {my_mention}
 ‌‎⿻┊DaTE : {MATRIXDATE}
 ‌‎⿻┊TimE : {MATRIXTM}
 ‌‎⿻┊UpTimE : {uptime}
