@@ -32,7 +32,6 @@ async def matrixar(event):
     delete = await event.delete()
     user = await event.client.get_entity(event.chat_id)
     
-    elapsed_time = time.time() - start_time
     uptime = await get_readable_time((time.time() - StartTime))
     tg_bot = Config.TG_BOT_USERNAME
     me = await event.client.get_me()
